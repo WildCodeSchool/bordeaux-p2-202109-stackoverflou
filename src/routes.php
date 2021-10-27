@@ -16,5 +16,5 @@
 ];*/
 
 return [
-    '' => ['HomeController', 'index',],
-]
+    '' => ['HomeController', 'index',]
+];
