@@ -2,11 +2,19 @@
 
 {% block content %}
 
-
+    <form>
+        <div>
+            <input type="search" id="maRecherche" name="q">
+            <i class="fas fa-search"></i>
+            <button type="button" class="btn btn-primary"></button>
+        </div>
+    </form>
 
     {% include 'Components/_tag.html.twig' %}
 
 
    {% include 'Components/_questionsHome.html.twig' %}
+
+
 
 {% endblock %}
