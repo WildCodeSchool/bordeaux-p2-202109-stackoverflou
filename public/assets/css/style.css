@@ -1,3 +1,5 @@
+
+
 .container-fluid {
     background-color: #43276B;
 }
@@ -5,3 +7,17 @@
     width: 100px;
     height: 100px;
 }
+
+.container_home {
+    display: flex;
+}
+
+.left-block{
+    display:flex;
+}
+
+.leftDown-block {
+    display: flex;
+    align-items: flex-end;
+}
+
