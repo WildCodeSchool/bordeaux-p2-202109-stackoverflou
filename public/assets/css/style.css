@@ -10,3 +10,7 @@
     display: flex;
     align-items: flex-end;
 }
+
+.img-responsive {
+    width: 50px;
+}
