@@ -1,0 +1,12 @@
+.container_home {
+    display: flex;
+}
+
+.left-block{
+    display:flex;
+}
+
+.leftDown-block {
+    display: flex;
+    align-items: flex-end;
+}
