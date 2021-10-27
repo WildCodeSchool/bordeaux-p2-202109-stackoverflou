@@ -1,3 +1,12 @@
+
+.container-fluid {
+    background-color: #43276B;
+}
+.img-responsive {
+    width: 100px;
+    height: 100px;
+}
+
 .container_home {
     display: flex;
 }
@@ -11,6 +20,4 @@
     align-items: flex-end;
 }
 
-.img-responsive {
-    width: 50px;
-}
+
