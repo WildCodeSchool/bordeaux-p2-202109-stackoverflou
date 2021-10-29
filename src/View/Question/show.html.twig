@@ -1,0 +1,8 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Question {{ question.title }}</h1>
+    <p>{{ question.id }}. {{ question.title }}</p>
+    <p>{{ question.description }}</p>
+    <a href="/Home">Back</a>
+{% endblock %}
