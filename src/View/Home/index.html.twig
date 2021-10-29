@@ -1,11 +1,25 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+    <div class="container">
+        <div class="row d-flex flex-column ">
+            <div class="col-12 border align-self-center">
+                {% include'Components/_searchbarHome.html.twig' %}
+            </div>
+            <div class="col-12 d-flex row">
+                <div class="col-4">
+                    {% include 'Components/_tag.html.twig' %}
+                </div>
+                <div class="col-8">
+                    {% include'Components/_questionsHome.html.twig' %}
+                </div>
+            </div>
+        </div>
 
-    <script src="https://kit.fontawesome.com/0a1d663467.js" crossorigin="anonymous"></script>
 
-    {% include 'Components/_tag.html.twig' %}
 
-    {% include 'Components/_questionsHome.html.twig' %}
+    </div>
+
+
 
 {% endblock %}
