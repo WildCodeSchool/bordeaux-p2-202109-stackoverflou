@@ -12,5 +12,4 @@ class UserController extends AbstractController
         $profile = $userManager->selectOneById($id);
         return $this->twig->render('User/user.html.twig', ['profile' => $profile]);
     }
-
 }
