@@ -19,6 +19,7 @@ class UserController extends AbstractController
     public function connect(): string
     {
         return $this->twig->render('User/formConnect/html/twig');
+    }
 
     public function profil(int $id): string
     {
