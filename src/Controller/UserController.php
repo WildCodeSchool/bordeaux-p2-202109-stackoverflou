@@ -15,14 +15,7 @@ class UserController extends AbstractController
         return $this->twig->render('User/formRegister.html.twig');
     }
 
-    public function update(array $user): bool
-    {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `username` = :username WHERE id=:id");
-        $statement->bindValue('id', $user['id'], \PDO::PARAM_INT);
-        $statement->bindValue('username', $user['username'], \PDO::PARAM_STR);
 
-        return $statement->execute();
-    }
 
     public function connect(): string
     {
