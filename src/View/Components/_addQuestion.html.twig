@@ -1,0 +1,12 @@
+<form method="post">
+        <input type="hidden" value="{{ question.id }}" name="id">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Titre</label>
+    <input type="text"  value="{{ question.title }}" class="form-control" id="exampleFormControlInput1" placeholder="Rapide description de votre problème" name="title">
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <input type="text" value="{{ question.description }}" name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></input>
+</div>
+        <input type="submit" value="Valider">
+    </form>
