@@ -12,7 +12,7 @@
 return [
     '' => ['HomeController', 'index',],
     'user' => ['UserController', 'profil', ['id']],
-    'user/create' => ['UserController', 'add',],
+    'user/create' => ['UserController', 'register',],
     'user/edit' => ['UserController', 'edit', ['id']],
     'questions/add' => ['QuestionController','add',],
     'questions/show' => ['QuestionController','show', ['id']],
