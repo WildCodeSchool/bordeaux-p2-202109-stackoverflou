@@ -8,7 +8,9 @@ class QuestionManager extends AbstractManager
     public function insert(array $question): int
     {
         $sta = $this->pdo->prepare("INSERT INTO " . self::TABLE . "(`title`,`description`,`created_at`) 
-        VALUES (:t,:description, NOW())");
+        VALUES (:t,:description, NOW())"),
+        JOIN
+
         $sta->bindValue('t', $question['title'], \PDO::PARAM_STR);
         $sta->bindValue('description', $question['description'], \PDO::PARAM_STR);
         $sta->execute();

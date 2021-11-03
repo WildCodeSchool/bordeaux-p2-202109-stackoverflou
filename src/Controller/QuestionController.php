@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\QuestionManager;
+use App\Model\TagManager;
 
 class QuestionController extends AbstractController
 {
@@ -59,6 +60,7 @@ class QuestionController extends AbstractController
     public function add(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            var_dump($_POST);die;
             // clean $_POST data
             $question = array_map('trim', $_POST);
 
@@ -69,8 +71,11 @@ class QuestionController extends AbstractController
             $id = $questionManager->insert($question);
             header('Location:/questions/show?id=' . $id);
         }
-
-        return $this->twig->render('Question/add.html.twig');
+        $tagManager = new TagManager();
+        $tags = $tagManager->selectAll('name');
+        return $this->twig->render('Question/add.html.twig', [
+            'tags' => $tags,
+        ]);
     }
 
 
