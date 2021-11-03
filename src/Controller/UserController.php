@@ -16,9 +16,14 @@ class UserController extends AbstractController
     }
 
 
-
     public function connect(): string
     {
         return $this->twig->render('User/formConnect/html/twig');
+
+    public function profil(int $id): string
+    {
+        $userManager = new UserManager();
+        $profile = $userManager->selectOneById($id);
+        return $this->twig->render('User/user.html.twig', ['profile' => $profile]);
     }
 }

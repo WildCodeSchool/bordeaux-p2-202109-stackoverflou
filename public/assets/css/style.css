@@ -1,31 +1,26 @@
-.bd-navbar {
+.navbar {
     background-color: #7952b3 !important;
 }
-
-.img-responsive {
-    width: 100px;
-    height: 100px;
-}
-
-.container_home {
-    display: flex;
-}
-
 .left-block {
     margin-top: 1rem;
     display:flex;
 }
-
 .leftDown-block {
     display: flex;
     align-items: flex-end;
 }
-
 .right-block {
     padding: 0 2rem;
     margin: auto;
 }
+<<<<<<< HEAD
 
+=======
+.input-group {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+>>>>>>> 43f051cf31360a20a22249e163fbb485391cd62f
 .form-control {
     margin-right: 1rem;
 }
@@ -34,8 +29,7 @@
      margin-left: auto;
      margin-right: 8em;
  }
-
- .navbar-brand {
+.navbar-brand {
      position: relative;
      margin-left: 2%;
  }
