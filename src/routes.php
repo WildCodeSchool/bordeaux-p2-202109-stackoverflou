@@ -16,5 +16,6 @@ return [
     'user/create' => ['UserController', 'add',],
     'user/edit' => ['UserController', 'edit', ['id']],
     'question/add' => ['QuestionController','add',],
-    'question/show' => ['QuestionController','show', ['id']]
+    'question/show' => ['QuestionController','show', ['id']],
+    'tag/show' => ['TagController','show', ['id']],
 ];
