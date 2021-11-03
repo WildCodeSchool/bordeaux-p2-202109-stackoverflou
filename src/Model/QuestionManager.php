@@ -7,10 +7,10 @@ class QuestionManager extends AbstractManager
     public const TABLE = 'question';
     public function insert(array $question): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "(`title`,`description`) VALUES (:title,:description)");
-        $statement->bindValue('title', $question['title'], \PDO::PARAM_STR);
-        $statement->bindValue('description', $question['description'], \PDO::PARAM_STR);
-        $statement->execute();
+        $sta = $this->pdo->prepare("INSERT INTO " . self::TABLE . "(`title`,`description`,`created_at`) VALUES (:t,:description, NOW())");
+        $sta->bindValue('t', $question['title'], \PDO::PARAM_STR);
+        $sta->bindValue('description', $question['description'], \PDO::PARAM_STR);
+        $sta->execute();
         return (int)$this->pdo->lastInsertId();
     }
 
