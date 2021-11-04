@@ -18,5 +18,6 @@ return [
     'questions/add' => ['QuestionController','add',],
     'questions/show' => ['QuestionController','show', ['id']],
     'questions/edit' => ['QuestionController','edit', ['id']],
-    'questions' => ['QuestionController', 'index',]
+    'questions' => ['QuestionController', 'index',],
+    'logout' => ['UserController', 'logout'],
 ];
