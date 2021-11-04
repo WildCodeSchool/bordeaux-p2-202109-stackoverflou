@@ -5,6 +5,7 @@ namespace App\Model;
 class UserManager extends AbstractManager
 {
     public const TABLE = 'user';
+
     public function createUser(array $user): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . static::TABLE .
