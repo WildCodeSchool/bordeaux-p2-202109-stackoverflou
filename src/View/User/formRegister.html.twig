@@ -9,24 +9,33 @@
                 </div>
                 <form method="post">
                     <div class="mb-4">
-                        <label for="username" class="form-label">Pseudo</label>
+                        <label for="username" class="form-label">Pseudo :</label>
                         <input type="text" name="username" class="form-control" id="username">
                     </div>
                     <div class="mb-4">
-                        <label for="email" class="form-label">Adresse mail</label>
+                        <label for="email" class="form-label">Adresse mail :</label>
                         <input type="email" name="email" class="form-control" id="email">
                     </div>
                     <div class="mb-4">
-                        <label for="password" class="form-label">Mot de passe</label>
+                        <label for="password" class="form-label">Mot de passe :</label>
                         <input type="password" name="password" class="form-control" id="password">
                     </div>
-                    <div class="mb-4 form-check">
-                        <input type="checkbox" class="form-check-input" id="remember">
-                        <label class="form-check-label" for="remember">Remember me</label>
-                    </div>
-                    <button type="submit" class="btn btn-success w-100">Login</button>
+                    <button type="submit" class="btn btn-success w-100 mt-4 mb-2">S'inscrire</button>
                 </form>
-                <p class="mb-0 mt-3 text-center">Pas encore inscrit ?<a href="#" class="text-decoration"></a></p>
+                <div class="text-center mt-3">
+                    <p>ou s'inscrire avec :</p>
+                    <button type="button" class="btn btn-primary btn-floating mx-1">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-danger btn-floating mx-1">
+                        <i class="fab fa-google"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-dark btn-floating mx-1">
+                        <i class="fab fa-github"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

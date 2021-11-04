@@ -12,6 +12,7 @@
 return [
     '' => ['HomeController', 'index',],
     'user' => ['UserController', 'profil', ['id']],
+    'user/connect' => ['UserController', 'connect',],
     'user/create' => ['UserController', 'register',],
     'user/edit' => ['UserController', 'edit', ['id']],
     'questions/add' => ['QuestionController','add',],
