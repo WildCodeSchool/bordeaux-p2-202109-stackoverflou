@@ -11,10 +11,10 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userManager = new UserManager();
             $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $profileId = $userManager->createUser($_POST);
-            $profile = $userManager->selectOneById($profileId);
-            $_SESSION['user'] = $profile;
-            header('location: /user/create?id=' . $profileId);
+            $userId = $userManager->createUser($_POST);
+            $userData = $userManager->selectOneById($userId);
+            $_SESSION['user'] = $userData;
+            header('location: /user/create?id=' . $userId);
         }
         return $this->twig->render('User/formRegister.html.twig', [
             'register_success' => $_GET['register'] ?? null,
@@ -26,15 +26,15 @@ class UserController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userManager = new UserManager();
-            $profile = $userManager->selectOneByEmail($_POST['email']);
-            if (password_verify($_POST['password'], $profile['password'])) {
-                $_SESSION['user'] = $profile;
+            $userData = $userManager->selectOneByEmail($_POST['email']);
+            if (password_verify($_POST['password'], $userData['password'])) {
+                $_SESSION['user'] = $userData;
             } else {
                 var_dump('not ok');
             }
         }
         return $this->twig->render('User/formConnect.html.twig', [
-            'session' => $_SESSION
+            'session' => $_SESSION,
         ]);
     }
 
@@ -47,9 +47,9 @@ class UserController extends AbstractController
     public function profil(int $id): string
     {
         $userManager = new UserManager();
-        $profile = $userManager->selectOneById($id);
+        $userData = $userManager->selectOneById($id);
         return $this->twig->render('User/user.html.twig', [
-            'profile' => $profile
+            'user_data' => $userData
         ]);
     }
 }
