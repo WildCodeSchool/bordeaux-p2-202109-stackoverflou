@@ -9,6 +9,8 @@
 
 namespace App\Controller;
 
+use App\Model\QuestionManager;
+
 class HomeController extends AbstractController
 {
     /**
@@ -22,5 +24,12 @@ class HomeController extends AbstractController
     public function index()
     {
         return $this->twig->render('Home/index.html.twig');
+    }
+    public function questionHome(): string
+    {
+        $questionManager = new QuestionManager();
+        $questions = $questionManager->selectAll('title');
+
+        return $this->twig->render('Home/index.html.twig', ['questions' => $questions]);
     }
 }

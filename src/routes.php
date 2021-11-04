@@ -10,7 +10,7 @@
 ];*/
 
 return [
-    '' => ['HomeController', 'index',],
+    '' => ['HomeController','questionHome'],
     'user' => ['UserController', 'profil', ['id']],
     'user/create' => ['UserController', 'register',],
     'user/edit' => ['UserController', 'edit', ['id']],
