@@ -30,7 +30,7 @@ class QuestionController extends AbstractController
 
         return $this->twig->render('Question/show.html.twig', [
             'question' => $question,
-            'tags'     => $tags,
+            'tags' => $tags,
         ]);
     }
 

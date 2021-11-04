@@ -31,3 +31,7 @@
      position: relative;
      margin-left: 2%;
  }
+.img_profile{
+    border-radius: 50%;
+    width: 200px;
+}
