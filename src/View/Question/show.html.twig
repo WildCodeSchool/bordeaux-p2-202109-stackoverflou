@@ -1,8 +1,20 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Question {{ question.title }}</h1>
-    <p>{{ question.id }}. {{ question.title }}</p>
-    <p>{{ question.description }}</p>
-    <a href="/Home">Back</a>
+    <h1>{{ question.title }}</h1>
+    <h2> TAG : </h2>
+    <div>
+        {% for tag in tags %}
+            {{ tag.name }}
+        {% else %}
+            Aucun tag pour cette question
+        {% endfor %}
+    </div>
+    <p>Description : {{ question.description }}</p>
+    <a href="/questions/edit?id={{ question.id }}">Edit</a>
+    <form action="/questions/delete" method="POST">
+        <input type="hidden" name="id" value="{{ question.id }}">
+        <button>Delete</button>
+    </form>
+    <a href="/questions">Back</a>
 {% endblock %}
