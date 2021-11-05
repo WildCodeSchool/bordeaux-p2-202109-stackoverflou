@@ -1,2 +1,25 @@
 {% extends 'layout.html.twig' %}
 
+{% block content %}
+    <div class="container">
+        <div class="row vh-100 align-items-center justify-content-center">
+            <div class="col-sm-8 col-md-6 col-lg-4 bg-white rounded p-4 shadow">
+                <div class="row justify-content-center mb-4">
+                    <img src="/assets/images/utilisateur.png" class="w-25">
+                </div>
+                <form method="post">
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Adresse mail :</label>
+                        <input type="email" name="email" class="form-control" id="email">
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Mot de passe :</label>
+                        <input type="password" name="password" class="form-control" id="password">
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mt-4 mb-2">Se connecter</button>
+                    <p class="text-center mt-2"><a href="create">Pas encore inscrit ?</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

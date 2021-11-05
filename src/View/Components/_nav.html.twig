@@ -1,33 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light bd-navbar">
+<nav class="navbar bg-white navbar-expand-lg navbar-light border-bottom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="assets/images/logo.png" class="me-2" height="70">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="navbar-logo mt-2">
+        <a href="/"><img src="/assets/images/logo.png" width="80px" height="80px" alt="logo"></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-light" type="button" >Poser une question</button>
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Communauté</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Contact</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Profil
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="profil">Mon profil</a></li>
-                        <li><a class="dropdown-item" href="#">Mes questions</a></li>
-                        <li><a class="dropdown-item" href="#">Se déconnecter</a></li>
-                    </ul>
-                </li>
-            </ul>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <div class="navbar-nav">
+                <a class="nav-link m-3 text-white" href="/questions/add">Poser une question</a>
+                <a class="nav-link m-3 text-white" href="#">Communauté</a>
+                <a class="nav-link m-3 text-white" href="/user/connect">Mon profil</a>
+                <a class="nav-link m-3 text-white" href="/logout">Déconnexion</a>
+            </div>
         </div>
     </div>
 </nav>

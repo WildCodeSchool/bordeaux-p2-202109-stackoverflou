@@ -12,10 +12,12 @@
 return [
     '' => ['HomeController','questionHome'],
     'user' => ['UserController', 'profil', ['id']],
+    'user/connect' => ['UserController', 'connect',],
     'user/create' => ['UserController', 'register',],
     'user/edit' => ['UserController', 'edit', ['id']],
     'questions/add' => ['QuestionController','add',],
     'questions/show' => ['QuestionController','show', ['id']],
     'questions/edit' => ['QuestionController','edit', ['id']],
-    'questions' => ['QuestionController', 'index',]
+    'questions' => ['QuestionController', 'index',],
+    'logout' => ['UserController', 'logout'],
 ];
