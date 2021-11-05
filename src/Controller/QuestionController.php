@@ -72,7 +72,7 @@ class QuestionController extends AbstractController
             //TODO clean post data
             $question = $_POST;
             // TODO validations (length, format...)
-
+            $question['user_id'] = $_SESSION['user']['id'];
             // if validation is ok, insert and redirection
             $questionManager = new QuestionManager();
             $questionId = $questionManager->insert($question);
