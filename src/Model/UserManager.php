@@ -8,7 +8,7 @@ class UserManager extends AbstractManager
 
     public function createUser(array $user): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO" . static::TABLE .
+        $statement = $this->pdo->prepare("INSERT INTO " . static::TABLE .
             "(`username`, `email`, `password`, `created_at`, `is_admin`)    
         VALUES(:username, :email, :password, NOW(), 0)");
         $statement->bindValue(':username', $user['username'], \PDO::PARAM_STR);
