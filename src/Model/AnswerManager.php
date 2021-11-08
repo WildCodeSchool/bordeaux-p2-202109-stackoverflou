@@ -8,7 +8,8 @@ class AnswerManager extends AbstractManager
 
     public function insert(array $answers): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "(`description`,`created_at`, user_id, ranking, question_id) 
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+            "(`description`,`created_at`, user_id, ranking, question_id) 
         VALUES (:description, NOW(), :user_id, :ranking, :question_id)");
 
         $statement->bindValue('description', $answers['description'], \PDO::PARAM_STR);
