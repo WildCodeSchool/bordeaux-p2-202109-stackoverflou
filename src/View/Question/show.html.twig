@@ -10,11 +10,11 @@
             Aucun tag pour cette question
         {% endfor %}
     </div>
-    <p>Description : {{ question.description }}</p>
+    <p>Description : {{ answer.description }}</p>
     <a href="/questions/edit?id={{ question.id }}">Edit</a>
     <form action="/questions/delete" method="POST">
         <input type="hidden" name="id" value="{{ question.id }}">
-        <button>Delete</button>
+        <a class="nav-link m-3 text-black" href="/questions/answers?id={{ question.id }}">Répondre</a>
     </form>
     <a href="/questions">Back</a>
 {% endblock %}
