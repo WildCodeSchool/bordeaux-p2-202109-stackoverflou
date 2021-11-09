@@ -3,11 +3,12 @@
 {% block content %}
     <h1>{{ question.title }}</h1>
     {% include 'Components/_tag.html.twig' %}
-    <p>Description : {{ answer.description }}</p>
+    <h2>Description</h2>
+    <p>{{ question.description|nl2br }}</p>
+    {% if session.user.is_admin %}
     <a href="/questions/edit?id={{ question.id }}">Edit</a>
-    <form action="/questions/delete" method="POST">
-        <input type="hidden" name="id" value="{{ question.id }}">
-        <a class="nav-link m-3 text-black" href="/questions/answers?id={{ question.id }}">Répondre</a>
-    </form>
-    <a href="/questions">Back</a>
+    {% endif %}
+    <a class="btn btn-primary" href="/questions/answers?id={{ question.id }}">Répondre</a>
+
+    <a href="/questions">Retour</a>
 {% endblock %}
