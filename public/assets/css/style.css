@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
+
 :root {
     --primary-color: #7952b3;
 }
-
-
+h1 h2 h3 h4 h5 {
+    font-family: 'Bungee Inline', cursive !important;
+}
 .navbar {
     background-color: #7952b3 !important;
 }
@@ -18,12 +21,10 @@
     padding: 0 2rem;
     margin: auto;
 }
-
 .input-group {
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
-
 .form-control {
     margin-right: 1rem;
 }
@@ -40,7 +41,6 @@
     border-radius: 50%;
     width: 200px;
 }
-
 .container-fluid {
     margin-left: 15%;
     margin-right: 15%;
