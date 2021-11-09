@@ -30,7 +30,8 @@ class UserController extends AbstractController
             }
         }
         return $this->twig->render('User/formRegister.html.twig', [
-            'register_success' => $_GET['register'] ?? null, 'errors' => $errors
+            'register_success' => $_GET['register'] ?? null,
+            'errors' => $errors
         ]);
     }
 
@@ -42,8 +43,8 @@ class UserController extends AbstractController
             if (password_verify($_POST['password'], $userData['password'])) {
                 $_SESSION['user'] = $userData;
             } else {
-                var_dump('not ok');
-            }
+                var_dump('La connexion a échouée');
+            } header('Location:/');
         }
         return $this->twig->render('User/formConnect.html.twig', ['session' => $_SESSION,]);
     }
