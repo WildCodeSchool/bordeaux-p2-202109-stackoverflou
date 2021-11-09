@@ -6,15 +6,17 @@ class AnswerManager extends AbstractManager
 {
     public const TABLE = 'answer';
 
-    public function insert(array $answers): int
+    public function insert(array $answerData): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-            "(`description`,`created_at`, user_id, ranking, question_id) 
-        VALUES (:description, NOW(), :user_id, :ranking, :question_id)");
+        $query = '
+        INSERT INTO answer (description, created_at, user_id, ranking, question_id)
+        VALUES (:description, NOW(), :userId, 0, :questionId)
+        ';
+        $statement = $this->pdo->prepare($query);
 
-        $statement->bindValue('description', $answers['description'], \PDO::PARAM_STR);
-        $statement->bindValue('user_id', $answers['user_id'], \PDO::PARAM_INT);
-        $statement->bindValue('question_id', $answers['question_id'], \PDO::PARAM_INT);
+        $statement->bindValue('description', $answerData['description'], \PDO::PARAM_STR);
+        $statement->bindValue('userId', $answerData['user_id'], \PDO::PARAM_INT);
+        $statement->bindValue('questionId', $answerData['question_id'], \PDO::PARAM_INT);
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }

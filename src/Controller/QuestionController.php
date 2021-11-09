@@ -113,15 +113,17 @@ class QuestionController extends AbstractController
         }
     }
 
-    public function addAnswer(): string
+    public function addAnswer($questionId): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $answer = $_POST;
             $answer['user_id'] = $_SESSION['user']['id'];
             $answerManager = new AnswerManager();
-            $answer = $answerManager->insert($answer);
-            var_dump($answer);
+            $answerManager->insert($answer);
+            header('Location: /questions/show?id=' . $questionId);
         }
-            return $this->twig->render('Question/add_answer.html.twig');
+            return $this->twig->render('Question/add_answer.html.twig', [
+                'question_id' => $questionId,
+            ]);
     }
 }
