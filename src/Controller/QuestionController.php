@@ -128,4 +128,17 @@ class QuestionController extends AbstractController
                 'question_id' => $questionId,
             ]);
     }
+    public function showPopularQuestion(int $questionId): string
+    {
+        $questionManager = new QuestionManager();
+        $tagManager = new TagManager();
+        $question = $questionManager->selectOneById($questionId);
+        $colorGenerator = new ColorGenerator();
+        $answerManager = new AnswerManager();
+        return $this->twig->render('Question/show.html.twig', [
+            'question' => $question,
+            'tags'     => $colorGenerator->generateTagsWithColor($tags),
+            'answers'  => $answerManager->getAnswersByQuestionId($questionId),
+        ]);
+    }
 }
