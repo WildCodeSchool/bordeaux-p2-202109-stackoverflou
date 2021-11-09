@@ -28,4 +28,18 @@ class AnswerManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function getAnswersByQuestionId(int $questionId): array
+    {
+        $query = '
+        SELECT * FROM answer a 
+        JOIN user u 
+        ON a.user_id = u.id
+        WHERE a.question_id=:questionId
+        ';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':questionId', $questionId);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }

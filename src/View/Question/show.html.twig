@@ -1,14 +1,29 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>{{ question.title }}</h1>
-    {% include 'Components/_tag.html.twig' %}
-    <h2>Description</h2>
-    <p>{{ question.description|nl2br }}</p>
-    {% if session.user.is_admin %}
-    <a href="/questions/edit?id={{ question.id }}">Edit</a>
-    {% endif %}
-    <a class="btn btn-primary" href="/questions/answers?id={{ question.id }}">Répondre</a>
+    <div class="container">
+        <h1>{{ question.title }}</h1>
+        {% include 'Components/_tag.html.twig' %}
+        <h2>Description</h2>
+        <p>{{ question.description|nl2br }}</p>
+        {% if session.user.is_admin %}
+        <a href="/questions/edit?id={{ question.id }}">Edit</a>
+        {% endif %}
+        <a class="btn btn-primary" href="/questions/answers?id={{ question.id }}">Répondre</a>
+    </div>
 
-    <a href="/questions">Retour</a>
+    <div class="container">
+        <ul>
+            {% for answer in answers %}
+                <li>
+                    <h3>Réponse donnée par {{ answer.username }}</h3>
+                    <div>
+                        {{ answer.description }}
+                    </div>
+                    {% else %}
+                    Pas encore de réponse, soyez le premier à rendre service !
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

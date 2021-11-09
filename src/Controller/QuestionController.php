@@ -29,9 +29,11 @@ class QuestionController extends AbstractController
         $tags = $tagManager->selectTagsByQuestionId($questionId);
         $question = $questionManager->selectOneById($questionId);
         $colorGenerator = new ColorGenerator();
+        $answerManager = new AnswerManager();
         return $this->twig->render('Question/show.html.twig', [
             'question' => $question,
             'tags'     => $colorGenerator->generateTagsWithColor($tags),
+            'answers'  => $answerManager->getAnswersByQuestionId($questionId),
         ]);
     }
     public function showTags(int $questionId): string
