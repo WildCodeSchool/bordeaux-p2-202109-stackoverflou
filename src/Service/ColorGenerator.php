@@ -11,14 +11,14 @@ class ColorGenerator
     public function generateTagsWithColor(array $tags = [])
     {
         $tagManager = new TagManager();
-        $tags = [];
-        $tagsToFill = empty($tags) ? $tagManager->selectAll() : $tags;
+        $tagsToFill = count($tags) === 0 ? $tagManager->selectAll() : $tags;
         $colors = $this->colors;
         shuffle($colors);
+        $results = [];
         foreach ($tagsToFill as $tag) {
             $tag['color'] = $colors[rand(0, (count($colors) - 1))];
-            $tags[] = $tag;
+            $results[] = $tag;
         }
-        return $tags;
+        return $results;
     }
 }
