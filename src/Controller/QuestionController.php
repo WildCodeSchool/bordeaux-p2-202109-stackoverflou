@@ -34,6 +34,14 @@ class QuestionController extends AbstractController
             'tags' => $tags,
         ]);
     }
+    public function showTags(int $questionId): string
+    {
+        $questionManager = new QuestionManager();
+        $questions = $questionManager->selectQuestionsByTag($questionId);
+        return $this->twig->render('Question/tags.html.twig', [
+            'questions' => $questions,
+        ]);
+    }
 
 
     /**
