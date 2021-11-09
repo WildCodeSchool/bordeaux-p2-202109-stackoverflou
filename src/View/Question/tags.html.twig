@@ -1,14 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    {% include 'Components/_questionsHome.html.twig' %}
-    <h1>{{ question.title }}</h1>
-    <h2> TAG : </h2>
-    <div>
-        {% for question in questions %}
-            {{ question.title }}
-        {% else %}
-        {% endfor %}
+    <div class="container">
+        {% include 'Components/_questionsHome.html.twig' %}
     </div>
-    <p>Description : {{ question.description }}</p>
 {% endblock %}

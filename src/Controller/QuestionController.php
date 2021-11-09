@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\AnswerManager;
 use App\Model\QuestionManager;
 use App\Model\TagManager;
+use App\Service\ColorGenerator;
 
 class QuestionController extends AbstractController
 {
@@ -27,11 +28,12 @@ class QuestionController extends AbstractController
         $tagManager = new TagManager();
         $tags = $tagManager->selectTagsByQuestionId($questionId);
         $question = $questionManager->selectOneById($questionId);
-
-
+        $colorGenerator = new ColorGenerator();
+        $answerManager = new AnswerManager();
         return $this->twig->render('Question/show.html.twig', [
             'question' => $question,
-            'tags' => $tags,
+            'tags'     => $colorGenerator->generateTagsWithColor($tags),
+            'answers'  => $answerManager->getAnswersByQuestionId($questionId),
         ]);
     }
     public function showTags(int $questionId): string
@@ -113,15 +115,17 @@ class QuestionController extends AbstractController
         }
     }
 
-    public function addAnswer(): string
+    public function addAnswer($questionId): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $answer = $_POST;
             $answer['user_id'] = $_SESSION['user']['id'];
             $answerManager = new AnswerManager();
-            $answer = $answerManager->insert($answer);
-            var_dump($answer);
+            $answerManager->insert($answer);
+            header('Location: /questions/show?id=' . $questionId);
         }
-            return $this->twig->render('Question/add_answer.html.twig');
+            return $this->twig->render('Question/add_answer.html.twig', [
+                'question_id' => $questionId,
+            ]);
     }
 }

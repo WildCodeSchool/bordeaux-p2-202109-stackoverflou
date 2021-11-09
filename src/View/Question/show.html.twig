@@ -1,20 +1,29 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>{{ question.title }}</h1>
-    <h2> TAG : </h2>
-    <div>
-        {% for tag in tags %}
-            {{ tag.name }}
-        {% else %}
-            Aucun tag pour cette question
-        {% endfor %}
+    <div class="container">
+        <h1>{{ question.title }}</h1>
+        {% include 'Components/_tag.html.twig' %}
+        <h2>Description</h2>
+        <p>{{ question.description|nl2br }}</p>
+        {% if session.user.is_admin %}
+        <a href="/questions/edit?id={{ question.id }}">Edit</a>
+        {% endif %}
+        <a class="btn btn-primary" href="/questions/answers?id={{ question.id }}">Répondre</a>
     </div>
-    <p>Description : {{ answer.description }}</p>
-    <a href="/questions/edit?id={{ question.id }}">Edit</a>
-    <form action="/questions/delete" method="POST">
-        <input type="hidden" name="id" value="{{ question.id }}">
-        <a class="nav-link m-3 text-black" href="/questions/answers?id={{ question.id }}">Répondre</a>
-    </form>
-    <a href="/questions">Back</a>
+
+    <div class="container">
+        <ul>
+            {% for answer in answers %}
+                <li>
+                    <h3>Réponse donnée par {{ answer.username }}</h3>
+                    <div>
+                        {{ answer.description }}
+                    </div>
+                    {% else %}
+                    Pas encore de réponse, soyez le premier à rendre service !
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
