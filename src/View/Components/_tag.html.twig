@@ -1,24 +1,13 @@
 <div class="container mb-3 bg-light border border-dark rounded">
     <div class="row mt-2">
         <div class="ms-2">
-            <A type="button" class="btn btn-outline-primary mb-2 ms-2">Php</A>
-            <A type="button" class="btn btn-outline-secondary mb-2 ms-2">Java</A>
-            <A type="button" class="btn btn-outline-danger mb-2 ms-2">Symfony</A>
-            <A type="button" class="btn btn-outline-warning mb-2 ms-2">React</A>
-            <A type="button" class="btn btn-outline-secondary mb-2 ms-2">C#</A>
-            <A type="button" class="btn btn-outline-info mb-2 ms-2">Python</A>
-            <A type="button" class="btn btn-outline-dark mb-2 ms-2">Ruby</A>
-            <A type="button" class="btn btn-outline-primary mb-2 ms-2">Css</A>
-            <A type="button" class="btn btn-outline-secondary mb-2 ms-2">Angular</A>
-            <A type="button" class="btn btn-outline-success mb-2 ms-2">Linux</A>
-            <A type="button" class="btn btn-outline-danger mb-2 ms-2">Xml</A>
-            <A type="button" class="btn btn-outline-warning mb-2 ms-2">Panda</A>
-            <A type="button" class="btn btn-outline-info mb-2 ms-2">Javascript</A>
-            <A type="button" class="btn btn-outline-danger mb-2 ms-2">Django</A>
-            <A type="button" class="btn btn-outline-dark mb-2 ms-2">Laravel</A>
-            <A type="button" class="btn btn-outline-primary mb-2 ms-2">C++</A>
-            <A type="button" class="btn btn-outline-danger mb-2 ms-2">Json</A>
-            <A type="button" class="btn btn-outline-warning mb-2 ms-2">Windows</A>
+            {% for tag in tags %}
+                <a href="/questions/tags?id={{ tag.id }}" type="button" class="btn btn-outline-{{ tag.color}} mb-2 ms-2">
+                    {{ tag.name }}
+                </a>
+            {% else %}
+                Aucun tag
+            {% endfor %}
         </div>
     </div>
 </div>

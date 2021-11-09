@@ -10,6 +10,8 @@
 namespace App\Controller;
 
 use App\Model\QuestionManager;
+use App\Model\TagManager;
+use App\Service\ColorGenerator;
 
 class HomeController extends AbstractController
 {
@@ -29,7 +31,11 @@ class HomeController extends AbstractController
     {
         $questionManager = new QuestionManager();
         $questions = $questionManager->selectAll('title');
-
-        return $this->twig->render('Home/index.html.twig', ['questions' => $questions]);
+        $colorGenerator = new ColorGenerator();
+        $tags = $colorGenerator->generateTagsWithColor();
+        return $this->twig->render('Home/index.html.twig', [
+            'questions' => $questions,
+            'tags'      => $tags,
+        ]);
     }
 }

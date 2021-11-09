@@ -2,14 +2,7 @@
 
 {% block content %}
     <h1>{{ question.title }}</h1>
-    <h2> TAG : </h2>
-    <div>
-        {% for tag in tags %}
-            {{ tag.name }}
-        {% else %}
-            Aucun tag pour cette question
-        {% endfor %}
-    </div>
+    {% include 'Components/_tag.html.twig' %}
     <p>Description : {{ answer.description }}</p>
     <a href="/questions/edit?id={{ question.id }}">Edit</a>
     <form action="/questions/delete" method="POST">

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\AnswerManager;
 use App\Model\QuestionManager;
 use App\Model\TagManager;
+use App\Service\ColorGenerator;
 
 class QuestionController extends AbstractController
 {
@@ -27,11 +28,10 @@ class QuestionController extends AbstractController
         $tagManager = new TagManager();
         $tags = $tagManager->selectTagsByQuestionId($questionId);
         $question = $questionManager->selectOneById($questionId);
-
-
+        $colorGenerator = new ColorGenerator();
         return $this->twig->render('Question/show.html.twig', [
             'question' => $question,
-            'tags' => $tags,
+            'tags'     => $colorGenerator->generateTagsWithColor($tags),
         ]);
     }
     public function showTags(int $questionId): string
