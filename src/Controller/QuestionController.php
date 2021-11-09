@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\AnswerManager;
 use App\Model\QuestionManager;
 use App\Model\TagManager;
 
@@ -110,5 +111,17 @@ class QuestionController extends AbstractController
             $questionManager->delete((int)$id);
             header('Location:/questions');
         }
+    }
+
+    public function addAnswer(): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $answer = $_POST;
+            $answer['user_id'] = $_SESSION['user']['id'];
+            $answerManager = new AnswerManager();
+            $answer = $answerManager->insert($answer);
+            var_dump($answer);
+        }
+            return $this->twig->render('Question/add_answer.html.twig');
     }
 }
