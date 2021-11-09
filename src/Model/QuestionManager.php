@@ -40,4 +40,18 @@ class QuestionManager extends AbstractManager
 
         return $statement->fetch();
     }
+    public function selectQuestionsByTag(int $id)
+    {
+        //TODO JOINTURE POUR WHERE TAG
+        $statement = $this->pdo->prepare("SELECT * FROM question 
+        JOIN tag_has_question
+        ON question.id = tag_has_question.question_id
+        JOIN tag
+        ON tag.id = tag_id
+        WHERE tag_id = 1");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }

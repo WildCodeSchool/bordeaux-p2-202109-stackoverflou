@@ -20,4 +20,5 @@ return [
     'questions/edit' => ['QuestionController','edit', ['id']],
     'questions' => ['QuestionController', 'index',],
     'logout' => ['UserController', 'logout'],
+    'questions/tags' => ['QuestionController', 'showTags', ['id']],
 ];
