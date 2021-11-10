@@ -131,14 +131,10 @@ class QuestionController extends AbstractController
     public function showPopularQuestion(int $questionId): string
     {
         $questionManager = new QuestionManager();
-        $tagManager = new TagManager();
-        $question = $questionManager->selectOneById($questionId);
-        $colorGenerator = new ColorGenerator();
+        $question = $questionManager->selectQuestionPopular($questionId);
         $answerManager = new AnswerManager();
-        return $this->twig->render('Question/show.html.twig', [
+        return $this->twig->render('Components/_popularQuestionsHome.html.twig', [
             'question' => $question,
-            'tags'     => $colorGenerator->generateTagsWithColor($tags),
-            'answers'  => $answerManager->getAnswersByQuestionId($questionId),
         ]);
     }
 }
