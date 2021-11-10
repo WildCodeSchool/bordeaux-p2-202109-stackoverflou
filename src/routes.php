@@ -11,7 +11,6 @@
 
 return [
     '' => ['HomeController','questionHome'],
-    '' =>
     'user' => ['UserController', 'profil', ['id']],
     'user/connect' => ['UserController', 'connect',],
     'user/create' => ['UserController', 'register',],
