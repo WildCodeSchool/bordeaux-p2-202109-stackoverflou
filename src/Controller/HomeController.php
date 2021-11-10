@@ -24,7 +24,7 @@ class HomeController extends AbstractController
     public function questionHome(): string
     {
         $questionManager = new QuestionManager();
-        $questions = $questionManager->selectAll('title');
+        $questions = $questionManager->selectAll('created_at');
         $colorGenerator = new ColorGenerator();
         $tags = $colorGenerator->generateTagsWithColor();
         $questionManager = new QuestionManager();
