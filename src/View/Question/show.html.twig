@@ -10,6 +10,7 @@
         <a href="/questions/edit?id={{ question.id }}">Edit</a>
         {% endif %}
         <a class="btn btn-warning" href="/questions/answers?id={{ question.id }}">Répondre</a>
+        {% include 'Components/_addAnswer.html.twig' %}
     </div>
 
     <div class="container">
