@@ -54,13 +54,15 @@ class QuestionManager extends AbstractManager
 
         return $statement->fetchAll();
     }
-    public function selectQuestionPopular(int $id)
+    public function selectQuestionPopular()
     {
-        $statement = $this->pdo->prepare("
-        SELECT count(question_id) as nbrep, q.title FROM answer as a
+        $this->pdo->query("SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+        $statement = $this->pdo->query("
+        SELECT count(question_id) as nbrep, q.title, q.id FROM answer as a
         JOIN question q
         ON q.id = a.question_id
         GROUP BY q.title
         ORDER BY nbrep desc limit 5;");
+        return $statement->fetchAll();
     }
 }
