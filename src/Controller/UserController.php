@@ -26,7 +26,7 @@ class UserController extends AbstractController
                 $userId = $userManager->createUser($_POST);
                 $userData = $userManager->selectOneById($userId);
                 $_SESSION['user'] = $userData;
-                header('location: /user/create?id=' . $userId);
+                header('location: /user?id=' . $_SESSION['user']['id']);
             }
         }
         return $this->twig->render('User/formRegister.html.twig', [
@@ -60,7 +60,7 @@ class UserController extends AbstractController
         $userManager = new UserManager();
         $userData = $userManager->selectOneById($id);
         return $this->twig->render('User/user.html.twig', [
-            'user_data' => $userData
+            'profile' => $userData
         ]);
     }
 }
