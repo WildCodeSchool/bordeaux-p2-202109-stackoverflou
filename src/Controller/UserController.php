@@ -42,9 +42,12 @@ class UserController extends AbstractController
             $userData = $userManager->selectOneByEmail($_POST['email']);
             if (password_verify($_POST['password'], $userData['password'])) {
                 $_SESSION['user'] = $userData;
+                header('location: /user?id=' . $_SESSION['user']['id']);
+                exit();
             } else {
                 var_dump('La connexion a échouée');
-            } header('Location:/');
+            }
+            header('Location:/');
         }
         return $this->twig->render('User/formConnect.html.twig', ['session' => $_SESSION,]);
     }
