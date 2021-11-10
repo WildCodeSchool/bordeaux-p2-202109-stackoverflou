@@ -68,10 +68,9 @@ class QuestionManager extends AbstractManager
     public function selectQuestionsByKeyword($keyword)
     {
         $statement = $this->pdo->prepare("
-        SELECT q.title FROM question q 
+        SELECT q.title, q.description FROM question q 
         WHERE q.title LIKE :keyword ");
         $statement->bindValue(':keyword', "%" . $keyword . "%", \PDO::PARAM_STR);
-        //var_dump($statement);die();
         $statement->execute();
         return $statement->fetchAll();
     }
