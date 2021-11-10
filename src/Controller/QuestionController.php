@@ -128,13 +128,5 @@ class QuestionController extends AbstractController
                 'question_id' => $questionId,
             ]);
     }
-    public function showPopularQuestion(int $questionId): string
-    {
-        $questionManager = new QuestionManager();
-        $question = $questionManager->selectQuestionPopular($questionId);
-        $answerManager = new AnswerManager();
-        return $this->twig->render('Components/_popularQuestionsHome.html.twig', [
-            'question' => $question,
-        ]);
-    }
+
 }
