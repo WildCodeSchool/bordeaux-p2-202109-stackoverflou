@@ -16,14 +16,7 @@ use App\Service\ColorGenerator;
 
 class HomeController extends AbstractController
 {
-    /**
-     * Display home page
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
+
     public function index()
     {
         return $this->twig->render('Home/index.html.twig');
@@ -34,18 +27,13 @@ class HomeController extends AbstractController
         $questions = $questionManager->selectAll('title');
         $colorGenerator = new ColorGenerator();
         $tags = $colorGenerator->generateTagsWithColor();
+        $questionManager = new QuestionManager();
+        $popularQuestions = $questionManager->selectQuestionPopular();
         return $this->twig->render('Home/index.html.twig', [
             'questions' => $questions,
             'tags'      => $tags,
+            'popular_questions' => $popularQuestions,
         ]);
     }
-    public function showPopularQuestion(int $questionId): string
-    {
-        $questionManager = new QuestionManager();
-        $question = $questionManager->selectQuestionPopular($questionId);
-        $answerManager = new AnswerManager();
-        return $this->twig->render('Components/_popularQuestionsHome.html.twig', [
-            'question' => $question,
-        ]);
-    }
+
 }
