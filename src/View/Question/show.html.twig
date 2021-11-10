@@ -9,7 +9,7 @@
         {% if session.user.is_admin %}
         <a href="/questions/edit?id={{ question.id }}">Edit</a>
         {% endif %}
-        <a class="btn btn-primary" href="/questions/answers?id={{ question.id }}">Répondre</a>
+        <a class="btn btn-warning" href="/questions/answers?id={{ question.id }}">Répondre</a>
     </div>
 
     <div class="container">
