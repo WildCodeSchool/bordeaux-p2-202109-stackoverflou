@@ -102,11 +102,6 @@ h1 h2 h3 h4 h5 {
     display: inline-block;
 }
 
-.footer-social a:hover {
-    background: black;
-    border-color: black;
-    color: #000;
-}
 
 .footer-social .fa {
     margin-top: 7px;
