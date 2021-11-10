@@ -11,6 +11,7 @@
 
 return [
     '' => ['HomeController','questionHome'],
+    '' =>
     'user' => ['UserController', 'profil', ['id']],
     'user/connect' => ['UserController', 'connect',],
     'user/create' => ['UserController', 'register',],
@@ -22,4 +23,5 @@ return [
     'questions/answers' => ['QuestionController', 'addAnswer', ['id']],
     'logout' => ['UserController', 'logout'],
     'questions/tags' => ['QuestionController', 'showTags', ['id']],
+    'question'
 ];
