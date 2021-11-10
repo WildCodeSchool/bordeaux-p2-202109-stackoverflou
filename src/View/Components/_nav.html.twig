@@ -9,7 +9,6 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <div class="navbar-nav">
         {% if (session.user) %}
-                <h5>Bonjour {{ session.user.username }} le camelChester</h5>
                 <a class="nav-link m-3 text-white" href="/questions/add">Poser une question</a>
                 <a class="nav-link m-3 text-white" href="#">Communauté</a>
                 <a class="nav-link m-3 text-white" href="/user?id={{ session.user.id }}">Mon profil</a>
