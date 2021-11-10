@@ -63,3 +63,47 @@ h1 h2 h3 h4 h5 {
         background-position: 0% 50%;
     }
 }
+
+.site-footer {
+    padding: 5em 0;
+    background: #f8f9fa;
+    font-size: 16px;
+    color: black;
+}
+
+.site-footer p:last-child {
+    margin-bottom: 0;
+}
+
+.site-footer a {
+    color: black;
+    border-bottom: 1px solid transparent;
+}
+
+.site-footer h2 {
+    font-size: 22px;
+    margin-bottom: 28px;
+    letter-spacing: .05em;
+    color: black;
+}
+
+.site-footer .footer-link li {
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.footer-social a {
+    line-height: 0;
+    border-radius: 50%;
+    margin: 0 5px 5px 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: inline-block;
+}
+
+
+.footer-social .fa {
+    margin-top: 7px;
+}
