@@ -46,9 +46,9 @@ h1 h2 h3 h4 h5 {
     margin-right: 15%;
 }
 .navbar{
-    background: linear-gradient(-272deg, #ee7752, #7952b3, #23a6d5, #fff);
+    background: linear-gradient(-400deg, #ee7752, #7952b3, #92ff55);
     background-size: 400% 400%;
-    animation: gradient 45s ease infinite;
+    animation: gradient 15s ease infinite;
 }
 
 @keyframes gradient {

@@ -7,7 +7,7 @@
                 <input type="text"  value="{{ question.title }}" class="form-control" id="exampleFormControlInput1" placeholder="Rapide description de votre problème" name="title">
             </div>
             <div class="mb-3">
-                <textarea placeholder="Description de votre problème" name="description" id="exampleFormControlTextarea1" class="form-control" rows="6" >{{ question.description }}</textarea>
+                <textarea placeholder="Description de votre problème" name="description" id="exampleFormControlTextarea1" class="form-control" rows="8" >{{ question.description }}</textarea>
             </div>
             {% for tag in tags %}
                 <div class="form-check d-inline-flex mb-3">
