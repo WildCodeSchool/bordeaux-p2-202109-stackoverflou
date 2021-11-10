@@ -65,4 +65,13 @@ class QuestionManager extends AbstractManager
         ORDER BY nbrep desc limit 5;");
         return $statement->fetchAll();
     }
+    public function selectQuestionsByKeyword($keyword)
+    {
+        $statement = $this->pdo->prepare("
+        SELECT q.title, q.description FROM question q 
+        WHERE q.title LIKE :keyword ");
+        $statement->bindValue(':keyword', "%" . $keyword . "%", \PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }

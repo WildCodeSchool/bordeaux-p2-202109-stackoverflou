@@ -25,6 +25,9 @@ class HomeController extends AbstractController
     {
         $questionManager = new QuestionManager();
         $questions = $questionManager->selectAll('created_at');
+        if (isset($_GET['keyword'])) {
+            $questions = $questionManager->selectQuestionsByKeyword($_GET['keyword']);
+        }
         $colorGenerator = new ColorGenerator();
         $tags = $colorGenerator->generateTagsWithColor();
         $questionManager = new QuestionManager();
