@@ -1,5 +1,8 @@
-<h1>{{profile.username}}</h1>
-<span class="mb-3" style="font-size: 24px; color: black;">
+<div class="mt-4 d-flex align-items-center flex-column text-center">
+    <img class="row text-center img_profile"src="https://avatars.githubusercontent.com/{{ profile.pseudo_github }}" class="img-thumbnail" alt="...">
+    <div class="row">
+        <h1>{{profile.user.id}}</h1>
+        <span class="mb-3" style="font-size: 24px; color: black;">
     <i title="Badge 1" class="fas fa-ribbon"></i>
     <i title="Badge 2" class="fas fa-hand-sparkles"></i>
     <i title="Badge 3" class="fas fa-certificate"></i>
@@ -8,9 +11,14 @@
     <i title="Badge 6" class="fas fa-trophy"></i>
     <i title="Badge 7" class="fas fa-crown"></i>
 </span>
-<p>{{profile.pseudo_github}}</p>
-<span class ="mb-3" style="font-size: 20px; color: black;">
+        <p>{{profile.pseudo_github}}</p>
+        <span class ="mb-3" style="font-size: 20px; color: black;">
     12 <i title="Questions asked" class="fas fa-question-circle"></i>
     36 <i title="Answers sent" class="fas fa-comment"></i>
     284 <i title="Thumbs-up received" class="fas fa-thumbs-up"></i>
-</span>
+    </span>
+    </div>
+    <div class="row">
+
+    </div>
+</div>
