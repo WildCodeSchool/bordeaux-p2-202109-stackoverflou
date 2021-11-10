@@ -9,6 +9,7 @@
 
 namespace App\Controller;
 
+use App\Model\AnswerManager;
 use App\Model\QuestionManager;
 use App\Model\TagManager;
 use App\Service\ColorGenerator;
@@ -36,6 +37,15 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig', [
             'questions' => $questions,
             'tags'      => $tags,
+        ]);
+    }
+    public function showPopularQuestion(int $questionId): string
+    {
+        $questionManager = new QuestionManager();
+        $question = $questionManager->selectQuestionPopular($questionId);
+        $answerManager = new AnswerManager();
+        return $this->twig->render('Components/_popularQuestionsHome.html.twig', [
+            'question' => $question,
         ]);
     }
 }
