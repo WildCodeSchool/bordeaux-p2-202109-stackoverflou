@@ -62,7 +62,7 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $userData = $userManager->selectOneById($id);
-        $userStat = $userManager->NbAnswersByUser($id);
+        $userStat = $userManager->NbAnswersByUser();
         return $this->twig->render('User/user.html.twig', [
             'profile' => $userData,
             'stat' => $userStat
