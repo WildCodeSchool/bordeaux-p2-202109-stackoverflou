@@ -42,4 +42,23 @@ class AnswerManager extends AbstractManager
         $statement->execute();
         return $statement->fetchAll();
     }
+
+    public function rankUp($answerId) : void
+    {
+        $statement = $this->pdo->prepare("UPDATE answer 
+        SET ranking = ranking+1
+        WHERE id=:id;");
+        $statement->bindValue(":id", $answerId);
+        $statement->execute();
+    }
+
+    public function NbRankByAnswers(int $questionId)
+    {
+       $query = (" SELECT id, ranking FROM answer a 
+        WHERE id=:id;");
+       $statement = $this->pdo->prepare($query);
+       $statement->bindValue(":id", $questionId);
+       $statement->execute();
+       return $statement->fetchAll();
+    }
 }

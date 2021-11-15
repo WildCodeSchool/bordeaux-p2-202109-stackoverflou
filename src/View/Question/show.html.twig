@@ -22,7 +22,11 @@
                 <li class="list-group-item">
 
                     <h4 class="mt-4 font-weight-normal">Réponse donnée par {{ answer.username }} le {{ answer.created_at|date("d/m/Y") }}</h4>
-
+                <form method="post" action="">
+                    <input type="hidden" name="answerId" value={{ answer.id }}>
+                    <button>Like</button>
+                    {{ ranking.ranking }}
+                </form>
                     <div>
                         {{ answer.description }}
                     </div>
