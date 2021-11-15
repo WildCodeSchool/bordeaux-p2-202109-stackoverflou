@@ -24,6 +24,10 @@ class QuestionController extends AbstractController
      */
     public function show(int $questionId): string
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $answerManager = new AnswerManager();
+            $answerManager->rankUp($_POST['answerId']);
+        }
         $questionManager = new QuestionManager();
         $tagManager = new TagManager();
         $tags = $tagManager->selectTagsByQuestionId($questionId);
@@ -135,6 +139,5 @@ class QuestionController extends AbstractController
         $answersByIdUser = $questionManager->selectAnswersByIdUser();
 
         return $this->twig->render('User/user.html.twig');
-
     }
 }
