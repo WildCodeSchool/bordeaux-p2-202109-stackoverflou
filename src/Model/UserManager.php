@@ -35,4 +35,14 @@ class UserManager extends AbstractManager
         $statement->bindValue('title', $user['username'], \PDO::PARAM_STR);
         return $statement->execute();
     }
+
+    public function NbAnswersByUser()
+    {
+        $statement = $this->pdo->query("
+        SELECT count(answer.user_id) as nbAnswer, u.username FROM camelchest.answer
+        JOIN user u
+        ON answer.user_id = u.id
+        group by u.id;");
+        return $statement->fetchAll();
+    }
 }

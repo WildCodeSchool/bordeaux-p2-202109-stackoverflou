@@ -64,10 +64,13 @@ class UserController extends AbstractController
         $questionManager = new QuestionManager();
         $userManager = new UserManager();
         $userData = $userManager->selectOneById($id);
+
         $answersByIdUser = $questionManager->selectAnswersByIdUser();
         return $this->twig->render('User/user.html.twig', [
             'profile' => $userData,
             'answers' => $answersByIdUser,
+
         ]);
     }
+
 }
