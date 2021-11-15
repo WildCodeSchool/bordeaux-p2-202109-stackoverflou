@@ -1,10 +1,10 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div class="container mt-3">
-        <h1>{{ question.title }}</h1>
+    <div class="container">
+        <h1 class="mb-3">{{ question.title }}</h1>
         {% include 'Components/_tag.html.twig' %}
-        <h2>Description</h2>
+        <h2 class="mb-3">Description</h2>
         <p>{{ question.description|nl2br }}</p>
         {% if session.user.is_admin %}
         <a href="/questions/edit?id={{ question.id }}">Edit</a>
@@ -16,8 +16,8 @@
     <div class="container">
         <ul>
             {% for answer in answers %}
-                <li>
-                    <h3>Réponse donnée par {{ answer.username }}</h3>
+                <li class="list-group-item">
+                    <h4 class="mt-4 font-weight-normal">Réponse donnée par {{ answer.username }} le {{ answer.created_at|date("d/m/Y") }}</h4>
                     <div>
                         {{ answer.description }}
                     </div>
@@ -27,4 +27,5 @@
             {% endfor %}
         </ul>
     </div>
+
 {% endblock %}
