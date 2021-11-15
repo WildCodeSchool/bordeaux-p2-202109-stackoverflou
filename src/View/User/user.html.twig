@@ -1,16 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-
             {% include 'Components/_upperProfile.html.twig'%}
-
-
-    les stats sont :     {{ stats.nbAnswer }}
-
+    <div class="container">
     <ul>
     {% for answer in answers %}
         <li class="list-group-item">
-
             <div>
                 <h3 class="mt-4 font-weight-normal">Réponse donnée le {{ answer.created_at|date("d/m/Y") }}</h3>
                 {{ answer.description }}
@@ -18,5 +13,6 @@
         </li>
     {% endfor %}
     </ul>
+    </div>
 
 {% endblock %}
