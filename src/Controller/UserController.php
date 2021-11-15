@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\QuestionManager;
 use App\Model\UserManager;
 
 class UserController extends AbstractController
@@ -26,11 +27,12 @@ class UserController extends AbstractController
                 $userId = $userManager->createUser($_POST);
                 $userData = $userManager->selectOneById($userId);
                 $_SESSION['user'] = $userData;
-                header('location: /user/create?id=' . $userId);
+                header('location: /user?id=' . $_SESSION['user']['id']);
             }
         }
         return $this->twig->render('User/formRegister.html.twig', [
-            'register_success' => $_GET['register'] ?? null, 'errors' => $errors
+            'register_success' => $_GET['register'] ?? null,
+            'errors' => $errors
         ]);
     }
 
@@ -41,9 +43,12 @@ class UserController extends AbstractController
             $userData = $userManager->selectOneByEmail($_POST['email']);
             if (password_verify($_POST['password'], $userData['password'])) {
                 $_SESSION['user'] = $userData;
+                header('location: /user?id=' . $_SESSION['user']['id']);
+                exit();
             } else {
-                var_dump('not ok');
+                var_dump('La connexion a échouée');
             }
+            header('Location:/');
         }
         return $this->twig->render('User/formConnect.html.twig', ['session' => $_SESSION,]);
     }
@@ -56,10 +61,16 @@ class UserController extends AbstractController
 
     public function profil(int $id): string
     {
+        $questionManager = new QuestionManager();
         $userManager = new UserManager();
         $userData = $userManager->selectOneById($id);
+
+        $answersByIdUser = $questionManager->selectAnswersByIdUser();
         return $this->twig->render('User/user.html.twig', [
-            'user_data' => $userData
+            'profile' => $userData,
+            'answers' => $answersByIdUser,
+
         ]);
     }
+
 }

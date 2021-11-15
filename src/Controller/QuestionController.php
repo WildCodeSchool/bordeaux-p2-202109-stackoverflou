@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Model\AnswerManager;
 use App\Model\QuestionManager;
 use App\Model\TagManager;
+use App\Service\ColorGenerator;
 
 class QuestionController extends AbstractController
 {
@@ -26,11 +28,20 @@ class QuestionController extends AbstractController
         $tagManager = new TagManager();
         $tags = $tagManager->selectTagsByQuestionId($questionId);
         $question = $questionManager->selectOneById($questionId);
-
-
+        $colorGenerator = new ColorGenerator();
+        $answerManager = new AnswerManager();
         return $this->twig->render('Question/show.html.twig', [
             'question' => $question,
-            'tags' => $tags,
+            'tags'     => $colorGenerator->generateTagsWithColor($tags),
+            'answers'  => $answerManager->getAnswersByQuestionId($questionId),
+        ]);
+    }
+    public function showTags(int $questionId): string
+    {
+        $questionManager = new QuestionManager();
+        $questions = $questionManager->selectQuestionsByTag($questionId);
+        return $this->twig->render('Question/tags.html.twig', [
+            'questions' => $questions,
         ]);
     }
 
@@ -102,5 +113,28 @@ class QuestionController extends AbstractController
             $questionManager->delete((int)$id);
             header('Location:/questions');
         }
+    }
+
+    public function addAnswer($questionId): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $answer = $_POST;
+            $answer['user_id'] = $_SESSION['user']['id'];
+            $answerManager = new AnswerManager();
+            $answerManager->insert($answer);
+            header('Location: /questions/show?id=' . $questionId);
+        }
+            return $this->twig->render('Question/show.html.twig', [
+                'question_id' => $questionId,
+            ]);
+    }
+
+    public function showAnswersByUser(): string
+    {
+        $questionManager = new QuestionManager();
+        $answersByIdUser = $questionManager->selectAnswersByIdUser();
+
+        return $this->twig->render('User/user.html.twig');
+
     }
 }

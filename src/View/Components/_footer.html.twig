@@ -1,14 +1,64 @@
-<section class="">
-    <!-- Footer -->
-    <footer class="bg-white text-dark text-center text-md-start fixed-bottom">
+<footer class="site-footer mt-5">
+    <div class="container text-center">
+        <div class="row mb-5">
+            <div class="col-md-3 mb-5">
+                <h2>A PROPOS</h2>
+                <a href="#">Notre équipe</a>
+            </div>
 
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2021 Copyright :
-            <a class="text-dark" href="">camelChest.com</a>
+            <div class="col-md-3 mb-5">
+                <h2>Contact & Adresse</h2>
+                <ul class="list-unstyled footer-link">
+                    <li class="d-flex justify-content-center">
+                        <span class="text-black">
+                            06 07 51 44 08
+                        </span>
+                    </li>
+                    <li class="d-flex justify-content-center">
+                        <span class="text-black">
+                            9 All. Serr, 33100
+                        </span>
+                    </li>
+                    <li class="d-flex justify-content-center">
+                        <span class="text-black">
+                            Bordeaux, city gang
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 mb-5">
+                <h2>Quick Nav</h2>
+                <ul class="list-unstyled footer-link">
+                    {% if (session.user) %}
+                    <li><a href="/questions/add">Poser une question</a> </li>
+                    {% else %}
+                    <li><a href="/user/connect">Poser une question</a> </li>
+                    {% endif %}
+                    <li><a href="#">Communauté</a> </li>
+                    {% if (session.user) %}
+                    <li><a href="/user?id={{ session.user.id }}">Mon profil</a> </li>
+                    {% else %}
+                    <li><a href="/user/connect">Mon profil</a> </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div class="col-md-3">
+                <h2>Notre équipe</h2>
+                <ul class="list-unstyled footer-link d-flex footer-social justify-content-center">
+                    <a href="https://github.com/Bricealnk"><img src="/assets/images/brice.png" width="30px" height="30px" alt="logo"></a>
+                    <a href="https://github.com/Baroness-prog"><img src="/assets/images/aurel.jpeg" width="30px" height="30px" alt="logo"></a>
+                    <a href="https://github.com/chbville"><img src="/assets/images/charles.jpeg" width="30px" height="30px" alt="logo"></a>
+                    <a href="https://github.com/MathisChartouni"><img src="/assets/images/mathis.png" width="30px" height="30px" alt="logo"></a>
+                </ul>
+            </div>
         </div>
-        <!-- Copyright -->
 
-    </footer>
-    <!-- Footer -->
-</section>
+        <div class="row">
+            <div class="col-12 text-md-center text-left">
+                <p> © 2020 Copyright : camelChest.com</p>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -3,15 +3,21 @@
         <div class="navbar-logo mt-2">
         <a href="/"><img src="/assets/images/logo.png" width="80px" height="80px" alt="logo"></a>
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <div class="navbar-nav">
+        {% if (session.user) %}
                 <a class="nav-link m-3 text-white" href="/questions/add">Poser une question</a>
                 <a class="nav-link m-3 text-white" href="#">Communauté</a>
-                <a class="nav-link m-3 text-white" href="/user/connect">Mon profil</a>
+                <a class="nav-link m-3 text-white" href="/user?id={{ session.user.id }}">Mon profil</a>
                 <a class="nav-link m-3 text-white" href="/logout">Déconnexion</a>
+        {% else %}
+                <a class="nav-link m-3 text-white" href="/user/connect">Poser une question</a>
+                <a class="nav-link m-3 text-white" href="/user/create">Inscription</a>
+                <a class="nav-link m-3 text-white" href="/user/connect">Connexion</a>
+        {% endif %}
             </div>
         </div>
     </div>

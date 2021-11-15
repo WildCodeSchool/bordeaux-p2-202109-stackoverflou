@@ -2,14 +2,17 @@
 
 {% block content %}
 
-    <div class="mt-4 d-flex align-items-center flex-column text-center">
-        <img class="row text-center img_profile"src="https://avatars.githubusercontent.com/u/83349185?v=4" class="img-thumbnail" alt="...">
-        <div class="row">
             {% include 'Components/_upperProfile.html.twig'%}
-        </div>
-        <div class="row">
+    <ul>
+    {% for answer in answers %}
+        <li class="list-group-item">
 
-        </div>
-    </div>
+            <div>
+                <h3 class="mt-4 font-weight-normal">Réponse donnée le {{ answer.created_at|date("d/m/Y") }}</h3>
+                {{ answer.description }}
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
 
 {% endblock %}

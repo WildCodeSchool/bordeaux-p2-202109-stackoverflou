@@ -1,20 +1,43 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>{{ question.title }}</h1>
-    <h2> TAG : </h2>
-    <div>
-        {% for tag in tags %}
-            {{ tag.name }}
-        {% else %}
-            Aucun tag pour cette question
-        {% endfor %}
+
+    <div class="container">
+        <h1 class="mb-3">{{ question.title }}</h1>
+
+
+    <div class="container bc-black-075">
+        <h1>{{ question.title }}</h1>
+
+    <div class="container">
+        <h1 class="mb-3">{{ question.title }}</h1>
+
+
+        {% include 'Components/_tag.html.twig' %}
+        <h2 class="mb-3">Description</h2>
+        <p>{{ question.description|nl2br }}</p>
+        {% if session.user.is_admin %}
+        <a href="/questions/edit?id={{ question.id }}">Edit</a>
+        {% endif %}
+        <a class="btn btn-warning" href="/questions/answers?id={{ question.id }}">Répondre</a>
+        {% include 'Components/_addAnswer.html.twig' %}
     </div>
-    <p>Description : {{ question.description }}</p>
-    <a href="/questions/edit?id={{ question.id }}">Edit</a>
-    <form action="/questions/delete" method="POST">
-        <input type="hidden" name="id" value="{{ question.id }}">
-        <button>Delete</button>
-    </form>
-    <a href="/questions">Back</a>
+
+    <div class="container">
+        <ul>
+            {% for answer in answers %}
+                <li class="list-group-item">
+
+                    <h4 class="mt-4 font-weight-normal">Réponse donnée par {{ answer.username }} le {{ answer.created_at|date("d/m/Y") }}</h4>
+
+                    <div>
+                        {{ answer.description }}
+                    </div>
+                    {% else %}
+                    Pas encore de réponse, soyez le premier à rendre service !
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
 {% endblock %}
