@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\QuestionManager;
 use App\Model\UserManager;
 
 class UserController extends AbstractController
@@ -60,12 +61,15 @@ class UserController extends AbstractController
 
     public function profil(int $id): string
     {
+        $questionManager = new QuestionManager();
         $userManager = new UserManager();
         $userData = $userManager->selectOneById($id);
-        $userStat = $userManager->NbAnswersByUser();
+
+        $answersByIdUser = $questionManager->selectAnswersByIdUser();
         return $this->twig->render('User/user.html.twig', [
             'profile' => $userData,
-            'stat' => $userStat
+            'answers' => $answersByIdUser,
+
         ]);
     }
 
