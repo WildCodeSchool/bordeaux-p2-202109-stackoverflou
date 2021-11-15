@@ -74,4 +74,17 @@ class QuestionManager extends AbstractManager
         $statement->execute();
         return $statement->fetchAll();
     }
+
+  //  public function selectAnswersByIdUser(int $id)
+  //  {
+  //      $statement = $this->pdo->prepare("
+  //      SELECT a.id, a.description FROM answer a
+  //      JOIN user u
+  //      ON u.id = a.user_id");
+  //      $statement->bindValue('id', $id,\PDO::PARAM_INT);
+  //      $statement->execute();
+
+  //      return $statement->fetchAll();
+  //  }
 }
+
