@@ -34,10 +34,12 @@ class QuestionController extends AbstractController
         $question = $questionManager->selectOneById($questionId);
         $colorGenerator = new ColorGenerator();
         $answerManager = new AnswerManager();
+        $nbRankByAnswer = $answerManager->NbRankByAnswers($questionId);
         return $this->twig->render('Question/show.html.twig', [
             'question' => $question,
             'tags'     => $colorGenerator->generateTagsWithColor($tags),
             'answers'  => $answerManager->getAnswersByQuestionId($questionId),
+
         ]);
     }
     public function showTags(int $questionId): string
@@ -140,4 +142,5 @@ class QuestionController extends AbstractController
 
         return $this->twig->render('User/user.html.twig');
     }
+
 }

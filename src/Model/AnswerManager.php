@@ -51,4 +51,14 @@ class AnswerManager extends AbstractManager
         $statement->bindValue(":id", $answerId);
         $statement->execute();
     }
+
+    public function NbRankByAnswers(int $questionId)
+    {
+       $query = (" SELECT id, ranking FROM answer a 
+        WHERE id=:id;");
+       $statement = $this->pdo->prepare($query);
+       $statement->bindValue(":id", $questionId);
+       $statement->execute();
+       return $statement->fetchAll();
+    }
 }
