@@ -124,9 +124,16 @@ class QuestionController extends AbstractController
             $answerManager->insert($answer);
             header('Location: /questions/show?id=' . $questionId);
         }
-            return $this->twig->render('Question/add_answer.html.twig', [
+            return $this->twig->render('Question/show.html.twig', [
                 'question_id' => $questionId,
             ]);
     }
 
+    public function showAnswersByUser(): string
+    {
+        $questionManager = new QuestionManager();
+        $answersByIdUser = $questionManager->selectAnswersByIdUser();
+
+        return $this->twig->render('User/user.html.twig');
+    }
 }

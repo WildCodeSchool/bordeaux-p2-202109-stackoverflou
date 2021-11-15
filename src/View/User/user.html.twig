@@ -3,5 +3,16 @@
 {% block content %}
 
             {% include 'Components/_upperProfile.html.twig'%}
+    <ul>
+    {% for answer in answers %}
+        <li class="list-group-item">
+
+            <div>
+                <h3 class="mt-4 font-weight-normal">Réponse donnée le {{ answer.created_at|date("d/m/Y") }}</h3>
+                {{ answer.description }}
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
 
 {% endblock %}

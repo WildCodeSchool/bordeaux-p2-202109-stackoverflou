@@ -27,6 +27,7 @@ class QuestionManager extends AbstractManager
 
         return $statement->execute();
     }
+
     public function selectOneByIdTag(int $id)
     {
         $statement = $this->pdo->prepare("SELECT question.id, question.title, question.description, 
@@ -40,6 +41,7 @@ class QuestionManager extends AbstractManager
 
         return $statement->fetch();
     }
+
     public function selectQuestionsByTag(int $id)
     {
         $statement = $this->pdo->prepare("
@@ -54,6 +56,7 @@ class QuestionManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
     public function selectQuestionPopular()
     {
         $this->pdo->query("SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
@@ -65,6 +68,7 @@ class QuestionManager extends AbstractManager
         ORDER BY nbrep desc limit 5;");
         return $statement->fetchAll();
     }
+
     public function selectQuestionsByKeyword($keyword)
     {
         $statement = $this->pdo->prepare("
@@ -72,6 +76,17 @@ class QuestionManager extends AbstractManager
         WHERE q.title LIKE :keyword ");
         $statement->bindValue(':keyword', "%" . $keyword . "%", \PDO::PARAM_STR);
         $statement->execute();
+        return $statement->fetchAll();
+    }
+
+    public function selectAnswersByIdUser()
+    {
+        $statement = $this->pdo->prepare("
+        SELECT a.created_at, a.id, a.description, u.id FROM answer a
+        JOIN user u
+        ON u.id = a.user_id");
+        $statement->execute();
+
         return $statement->fetchAll();
     }
 }
