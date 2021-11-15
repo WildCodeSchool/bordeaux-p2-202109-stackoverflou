@@ -1,6 +1,6 @@
-<div class="container  bg-light pt-3 pb-3 mx-auto border border-black">
+<div class="container pt-3 pb-3 mx-auto">
     <div class="row mt-2">
-        <div class="ms-2">
+        <div class="ms-2 text-center">
             {% for tag in tags %}
                 <a href="/questions/tags?id={{ tag.id }}" type="button" class="btn btn-outline-{{ tag.color}} mb-2 ms-2">
                     {{ tag.name }}
