@@ -3,6 +3,10 @@
 {% block content %}
 
             {% include 'Components/_upperProfile.html.twig'%}
+
+
+    les stats sont :     {{ stats.nbAnswer }}
+
     <ul>
     {% for answer in answers %}
         <li class="list-group-item">
