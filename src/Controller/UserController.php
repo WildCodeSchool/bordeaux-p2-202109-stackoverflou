@@ -66,12 +66,17 @@ class UserController extends AbstractController
         $userManager = new UserManager();
         $answerManager = new AnswerManager();
         $userData = $userManager->selectOneById($id);
+
         $answersByIdUser = $questionManager->selectAnswersByIdUser();
         $nbAnswersByUser = $answerManager->nbAnswersByUser();
         return $this->twig->render('User/user.html.twig', [
             'profile' => $userData,
             'answers' => $answersByIdUser,
+<<<<<<< HEAD
             'stats' => $nbAnswersByUser,
+=======
+
+>>>>>>> b968698cea411b2e1a77c47ef706261c5ee4f885
         ]);
     }
 }

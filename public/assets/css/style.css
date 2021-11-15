@@ -21,7 +21,7 @@
     margin-top: 1rem;
 }
  .navbar {
-     position: relative; /* on positionne le conteneur */
+     position: relative;
      margin-left: auto;
      margin-right: auto;
  }
@@ -43,7 +43,6 @@
     background-size: 400% 400%;
     animation: gradient 30s ease infinite;
 }
-
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -55,30 +54,25 @@
         background-position: 0% 50%;
     }
 }
-
 .site-footer {
     padding: 5em 0;
     background: #f8f9fa;
     font-size: 16px;
     color: black;
 }
-
 .site-footer p:last-child {
     margin-bottom: 0;
 }
-
 .site-footer a {
     color: black;
     border-bottom: 1px solid transparent;
 }
-
 .site-footer h2 {
     font-size: 22px;
     margin-bottom: 28px;
     letter-spacing: .05em;
     color: black;
 }
-
 .site-footer .footer-link li {
     line-height: 1.5;
     margin-bottom: 5px;
@@ -94,8 +88,30 @@
     text-align: center;
     display: inline-block;
 }
-
-
 .footer-social .fa {
     margin-top: 7px;
+}
+@keyframes pulse {
+    0% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    50% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+
+    100% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+.animation-button{
+    animation-duration: 6s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
 }
