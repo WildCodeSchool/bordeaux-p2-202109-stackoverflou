@@ -135,6 +135,5 @@ class QuestionController extends AbstractController
         $answersByIdUser = $questionManager->selectAnswersByIdUser();
 
         return $this->twig->render('User/user.html.twig');
-
     }
 }
