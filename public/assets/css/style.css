@@ -107,3 +107,29 @@ h1 h2 h3 h4 h5 {
 .footer-social .fa {
     margin-top: 7px;
 }
+
+@keyframes pulse {
+    0% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    50% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+
+    100% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+
+.animation-button{
+    animation-duration: 6s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+}
