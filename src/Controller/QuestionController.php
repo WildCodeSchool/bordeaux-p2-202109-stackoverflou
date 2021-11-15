@@ -24,16 +24,22 @@ class QuestionController extends AbstractController
      */
     public function show(int $questionId): string
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $answerManager = new AnswerManager();
+            $answerManager->rankUp($_POST['answerId']);
+        }
         $questionManager = new QuestionManager();
         $tagManager = new TagManager();
         $tags = $tagManager->selectTagsByQuestionId($questionId);
         $question = $questionManager->selectOneById($questionId);
         $colorGenerator = new ColorGenerator();
         $answerManager = new AnswerManager();
+        $nbRankByAnswer = $answerManager->NbRankByAnswers($questionId);
         return $this->twig->render('Question/show.html.twig', [
             'question' => $question,
             'tags'     => $colorGenerator->generateTagsWithColor($tags),
             'answers'  => $answerManager->getAnswersByQuestionId($questionId),
+
         ]);
     }
     public function showTags(int $questionId): string
