@@ -115,4 +115,7 @@
     animation-name: pulse;
     animation-iteration-count: infinite;
 }
+.no-border {
+    border: 0;
+}
 
