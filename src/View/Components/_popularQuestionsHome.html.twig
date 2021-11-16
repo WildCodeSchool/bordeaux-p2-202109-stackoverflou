@@ -1,10 +1,9 @@
 <div class="list-group w-100 mt-4">
     <a href="#" class="list-group-item list-group-item-action active h-25 navbar" style="background-color: #7952b3">
         <div class="d-flex w-10 justify-content-between" >
-            <div class="container text-center">
-            <h5 class="mt-2">Questions Les Plus Populaires</h5>
-            </div>
+            <h5 class="mb-1">Questions Les Plus Populaires</h5>
         </div>
+
     </a>
     {% for question in popular_questions %}
         <p class="mb-2 mt-2 border"></p>
@@ -14,5 +13,6 @@
             <small class="text-muted"> {{ question.nbrep }} <i class="fas fa-comment-dots"></i></small>
             </div>
         </div>
+
 {% endfor%}
 </div>

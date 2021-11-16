@@ -32,14 +32,11 @@
                 <ul class="list-unstyled footer-link">
                     {% if (session.user) %}
                     <li><a href="/questions/add">Poser une question</a> </li>
+                        <li><a href="/user?id={{ session.user.id }}">Mon profil</a> </li>
                     {% else %}
-                    <li><a href="/user/connect">Poser une question</a> </li>
-                    {% endif %}
-                    <li><a href="#">Communauté</a> </li>
-                    {% if (session.user) %}
-                    <li><a href="/user?id={{ session.user.id }}">Mon profil</a> </li>
-                    {% else %}
-                    <li><a href="/user/connect">Mon profil</a> </li>
+                        <li><a href="/user/connect">Mon profil</a> </li>
+                    <li><a href="/user/connect">Poser une question</a></li>
+                        <li><a href="#">Communauté</a> </li>
                     {% endif %}
                 </ul>
             </div>
@@ -47,7 +44,7 @@
             <div class="col-md-3">
                 <h2>Notre équipe</h2>
                 <ul class="list-unstyled footer-link d-flex footer-social justify-content-center">
-                    <a href="https://github.com/Bricealnk"><img src="/assets/images/brice.png" width="30px" height="30px" alt="logo"></a>
+                    <a href="https://github.com/Bricealnk"><img src="/assets/images/brice.png" width="30px" height="30px" alt="logo" class="footer-social text-center d-inline-block"></a>
                     <a href="https://github.com/Baroness-prog"><img src="/assets/images/aurel.jpeg" width="30px" height="30px" alt="logo"></a>
                     <a href="https://github.com/chbville"><img src="/assets/images/charles.jpeg" width="30px" height="30px" alt="logo"></a>
                     <a href="https://github.com/MathisChartouni"><img src="/assets/images/mathis.png" width="30px" height="30px" alt="logo"></a>
