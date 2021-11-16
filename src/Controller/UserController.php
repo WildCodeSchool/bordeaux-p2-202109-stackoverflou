@@ -74,4 +74,13 @@ class UserController extends AbstractController
             'stats' => $nbAnswersByUser,
         ]);
     }
+
+    public function showAllProfiles()
+    {
+        $userManager = new UserManager();
+        $users = $userManager->selectAll();
+        return $this->twig->render('User/comminity.html.twig', [
+            'users' => $users
+        ]);
+    }
 }

@@ -45,4 +45,5 @@ class UserManager extends AbstractManager
         group by u.id;");
         return $statement->fetchAll();
     }
+
 }

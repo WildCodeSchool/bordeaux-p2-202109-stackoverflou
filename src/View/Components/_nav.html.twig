@@ -10,7 +10,7 @@
             <div class="navbar-nav">
         {% if (session.user) %}
                 <a class="nav-link m-3 text-white" href="/questions/add">Poser une question</a>
-                <a class="nav-link m-3 text-white" href="#">Communauté</a>
+                <a class="nav-link m-3 text-white" href="/community">Communauté</a>
                 <a class="nav-link m-3 text-white" href="/user?id={{ session.user.id }}">Mon profil</a>
                 <a class="nav-link m-3 text-white" href="/logout">Déconnexion</a>
         {% else %}
