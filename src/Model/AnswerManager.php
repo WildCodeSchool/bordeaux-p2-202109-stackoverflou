@@ -32,7 +32,7 @@ class AnswerManager extends AbstractManager
     public function getAnswersByQuestionId(int $questionId): array
     {
         $query = '
-        SELECT * FROM answer a 
+        SELECT a.*, u.username, u.pseudo_github FROM answer a 
         JOIN user u 
         ON a.user_id = u.id
         WHERE a.question_id=:questionId

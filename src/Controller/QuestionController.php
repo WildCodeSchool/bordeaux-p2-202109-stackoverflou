@@ -24,9 +24,14 @@ class QuestionController extends AbstractController
      */
     public function show(int $questionId): string
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $answerManager = new AnswerManager();
+        $answerManager = new AnswerManager();
+        if (isset($_POST['answerId'])) {
             $answerManager->rankUp($_POST['answerId']);
+        }
+        if (isset($_POST['validation'])) {
+            $_POST['user_id'] = $_SESSION['user']['id'];
+            $_POST['question_id'] = $_GET['id'];
+            $answerManager->insert($_POST);
         }
         $questionManager = new QuestionManager();
         $tagManager = new TagManager();
@@ -34,7 +39,6 @@ class QuestionController extends AbstractController
         $question = $questionManager->selectOneById($questionId);
         $colorGenerator = new ColorGenerator();
         $answerManager = new AnswerManager();
-        $nbRankByAnswer = $answerManager->NbRankByAnswers($questionId);
         return $this->twig->render('Question/show.html.twig', [
             'question' => $question,
             'tags'     => $colorGenerator->generateTagsWithColor($tags),
@@ -98,7 +102,7 @@ class QuestionController extends AbstractController
                 $tagManager->bindTagWithQuestion($tagId, $questionId);
             }
 
-            header('Location:/questions/show?id=' . $questionId);
+            header('Location: /questions/show?id=' . $questionId);
         }
 
         $tags = $tagManager->selectAll('name');
@@ -117,7 +121,7 @@ class QuestionController extends AbstractController
             $id = trim($_POST['id']);
             $questionManager = new QuestionManager();
             $questionManager->delete((int)$id);
-            header('Location:/questions');
+            header('Location: /questions');
         }
     }
 
@@ -133,13 +137,5 @@ class QuestionController extends AbstractController
             return $this->twig->render('Question/show.html.twig', [
                 'question_id' => $questionId,
             ]);
-    }
-
-    public function showAnswersByUser(): string
-    {
-        $questionManager = new QuestionManager();
-        $answersByIdUser = $questionManager->selectAnswersByIdUser();
-
-        return $this->twig->render('User/user.html.twig');
     }
 }
