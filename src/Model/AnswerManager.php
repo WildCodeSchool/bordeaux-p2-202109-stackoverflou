@@ -44,13 +44,14 @@ class AnswerManager extends AbstractManager
     }
 
      public function nbAnswersByUser()
-    {
-        $statement = $this->pdo->prepare("
+     {
+         $statement = $this->pdo->prepare("
         SELECT count(answer.user_id) as nbAnswer, u.username FROM answer
         JOIN user u
         ON answer.user_id = u.id
         group by u.id");
-        return $statement->fetchAll();
+         return $statement->fetchAll();
+     }
 
     public function rankUp($answerId) : void
     {
@@ -61,7 +62,7 @@ class AnswerManager extends AbstractManager
         $statement->execute();
     }
 
-    public function NbRankByAnswers(int $questionId)
+    public function nbRankByAnswers(int $questionId)
     {
        $query = (" SELECT id, ranking FROM answer a 
         WHERE id=:id;");
