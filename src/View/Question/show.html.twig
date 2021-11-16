@@ -2,11 +2,9 @@
 
 {% block content %}
 
-    <div class="container bc-black-075">
-        <h1>{{ question.title }}</h1>
-
     <div class="container">
         <h1 class="mb-3">{{ question.title }}</h1>
+
 
         {% include 'Components/_tag.html.twig' %}
         <h2 class="mb-3">Description</h2>
@@ -15,13 +13,20 @@
         <a href="/questions/edit?id={{ question.id }}">Edit</a>
         {% endif %}
         <a class="btn btn-warning" href="/questions/answers?id={{ question.id }}">Répondre</a>
+        {% include 'Components/_addAnswer.html.twig' %}
     </div>
 
     <div class="container">
         <ul>
             {% for answer in answers %}
                 <li class="list-group-item">
-                    <h4 class="mt-4 font-weight-normal">Réponse donnée par {{ answer.username }} le {{ answer.created_at }}</h4>
+
+                    <h4 class="mt-4 font-weight-normal">Réponse donnée par {{ answer.username }} le {{ answer.created_at|date("d/m/Y") }}</h4>
+                <form method="post" action="">
+                    <input type="hidden" name="answerId" value={{ answer.id }}>
+                    <button>Like</button>
+                    {{ ranking.ranking }}
+                </form>
                     <div>
                         {{ answer.description }}
                     </div>

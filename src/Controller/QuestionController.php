@@ -24,16 +24,22 @@ class QuestionController extends AbstractController
      */
     public function show(int $questionId): string
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $answerManager = new AnswerManager();
+            $answerManager->rankUp($_POST['answerId']);
+        }
         $questionManager = new QuestionManager();
         $tagManager = new TagManager();
         $tags = $tagManager->selectTagsByQuestionId($questionId);
         $question = $questionManager->selectOneById($questionId);
         $colorGenerator = new ColorGenerator();
         $answerManager = new AnswerManager();
+        $nbRankByAnswer = $answerManager->NbRankByAnswers($questionId);
         return $this->twig->render('Question/show.html.twig', [
             'question' => $question,
             'tags'     => $colorGenerator->generateTagsWithColor($tags),
             'answers'  => $answerManager->getAnswersByQuestionId($questionId),
+
         ]);
     }
     public function showTags(int $questionId): string
@@ -123,9 +129,17 @@ class QuestionController extends AbstractController
             $answerManager->insert($answer);
             header('Location: /questions/show?id=' . $questionId);
         }
-            return $this->twig->render('Question/add_answer.html.twig', [
+            return $this->twig->render('Question/show.html.twig', [
                 'question_id' => $questionId,
             ]);
+    }
+
+    public function showAnswersByUser(): string
+    {
+        $questionManager = new QuestionManager();
+        $answersByIdUser = $questionManager->selectAnswersByIdUser();
+
+        return $this->twig->render('User/user.html.twig');
     }
 
 }
