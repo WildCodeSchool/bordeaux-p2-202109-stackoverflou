@@ -1,20 +1,17 @@
 <div class="list-group w-100 mt-4">
-    <a href="#" class="list-group-item list-group-item-action active h-25 navbar" style="background-color: #7952b3">
+    <a href="#" class="list-group-item list-group-item-action active h-25" style="background-color: #7952b3">
         <div class="d-flex w-10 justify-content-between" >
-            <h5 class="mb-1">Questions Les Plus Populaires</h5>
-        </div>
-        {% for question in popular_questions %}
-        <p class="mb-1"></p>
             <div class="container text-center">
-            <h5 class="mt-2">Questions Les Plus Populaires</h5>
+                <h5 class="mt-2">Questions Les Plus Populaires</h5>
             </div>
+        </div>
     </a>
     {% for question in popular_questions %}
         <p class="mb-2 mt-2 border"></p>
-            <div id="{{ question.id }}" class="d-flex justify-content-between {{ loop.index == 1 ? 'show' : '' }}">
+        <div id="{{ question.id }}" class="d-flex justify-content-between {{ loop.index == 1 ? 'show' : '' }}">
             <a href="/questions/show?id={{ question.id }}" class="mb-1">{{ question.title }}</a>
             <div class="text-end">
-            <small class="text-muted"> {{ question.nbrep }} <i class="fas fa-comment-dots"></i></small>
+                <small class="text-muted"> {{ question.nbrep }} <i class="fas fa-comment-dots"></i></small>
             </div>
         </div>
     {% endfor%}
