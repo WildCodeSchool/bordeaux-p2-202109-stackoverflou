@@ -8,8 +8,7 @@
             <div class="container text-center">
             <h5 class="mt-2">Questions Les Plus Populaires</h5>
             </div>
-        </div>
-  </a>
+    </a>
     {% for question in popular_questions %}
         <p class="mb-2 mt-2 border"></p>
             <div id="{{ question.id }}" class="d-flex justify-content-between {{ loop.index == 1 ? 'show' : '' }}">
@@ -18,5 +17,5 @@
             <small class="text-muted"> {{ question.nbrep }} <i class="fas fa-comment-dots"></i></small>
             </div>
         </div>
-{% endfor%}
+    {% endfor%}
 </div>
