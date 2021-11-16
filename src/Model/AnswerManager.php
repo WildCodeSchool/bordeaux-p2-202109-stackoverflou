@@ -31,29 +31,29 @@ class AnswerManager extends AbstractManager
 
     public function getAnswersByQuestionId(int $questionId): array
     {
-        $query = '
+        $query = ('
         SELECT u.username, u.id, a.id as answerId, a.description, a.created_at, a.ranking FROM answer a 
         JOIN user u 
         ON a.user_id = u.id
         WHERE a.question_id=:questionId
-        ';
+        ');
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':questionId', $questionId);
         $statement->execute();
         return $statement->fetchAll();
     }
 
-     public function nbAnswersByUser()
-     {
-         $statement = $this->pdo->prepare("
+    public function nbAnswersByUser()
+    {
+        $statement = $this->pdo->prepare("
         SELECT count(answer.user_id) as nbAnswer, u.username FROM answer
         JOIN user u
         ON answer.user_id = u.id
         group by u.id");
-         return $statement->fetchAll();
-     }
+        return $statement->fetchAll();
+    }
 
-    public function rankUp($answerId) : void
+    public function rankUp($answerId): void
     {
         $statement = $this->pdo->prepare("UPDATE answer 
         SET ranking = ranking +1
@@ -64,11 +64,11 @@ class AnswerManager extends AbstractManager
 
     public function nbRankByAnswers(int $questionId)
     {
-       $query = (" SELECT id, ranking FROM answer a 
+        $query = (" SELECT id, ranking FROM answer a 
         WHERE id=:id;");
-       $statement = $this->pdo->prepare($query);
-       $statement->bindValue(":id", $id);
-       $statement->execute();
-       return $statement->fetch();
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        return $statement->fetch();
     }
 }

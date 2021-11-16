@@ -16,6 +16,6 @@ class AnswerController extends AbstractController
     public function rankByAnswer(): int
     {
         $answerManager = new AnswerManager();
-        $answerManager->nbRankByAnswers();
+        $answerManager->NbRankByAnswers();
     }
 }
