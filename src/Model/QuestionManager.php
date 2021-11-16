@@ -86,7 +86,6 @@ class QuestionManager extends AbstractManager
         JOIN user u
         ON u.id = a.user_id");
         $statement->execute();
-
         return $statement->fetchAll();
     }
 }
