@@ -62,7 +62,6 @@ class AnswerManager extends AbstractManager
         $statement->execute();
     }
 
-
     public function nbRankByAnswers(int $questionId)
     {
        $query = (" SELECT id, ranking FROM answer a 

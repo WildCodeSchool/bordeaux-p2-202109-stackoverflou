@@ -3,12 +3,12 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-{{ question.id }}" aria-expanded="true" aria-controls="collapseOne">
-                {{ question.title }}
+                <strong>{{ question.title }}</strong>
             </button>
         </h2>
         <div id="collapseOne-{{ question.id }}" class="accordion-collapse collapse {{ loop.index == 1 ? 'show' : '' }}" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <strong> {{ question.description }}
+                <p> {{ question.description }} </p>
             </div>
             <div class="text-center mb-1">
                 <a href="/questions/show?id={{ question.id }}" class="btn btn-primary btn-sm col-2">Voir la question</a>
