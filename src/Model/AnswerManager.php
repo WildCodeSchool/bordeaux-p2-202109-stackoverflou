@@ -53,6 +53,16 @@ class AnswerManager extends AbstractManager
          return $statement->fetchAll();
      }
 
+    public function nbQuestionsByUser($id): array
+    {
+        $statement = $this->pdo->prepare("SELECT count(id) as nbQuestion
+        FROM question 
+        WHERE user_id =:id");
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
     public function rankUp($answerId) : void
     {
         $statement = $this->pdo->prepare("UPDATE answer 
