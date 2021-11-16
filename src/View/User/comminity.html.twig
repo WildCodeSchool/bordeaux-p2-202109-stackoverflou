@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Liste des camelChesters</h1>
+    {% for user in users %}
+<ul>
+    <li class="border">
+        {{ user.username }}   <br>
+        Pseudo_GitHub : {{ user.pseudo_github }}
+    </li>
+</ul>
+
+    {% endfor %}
+
+{% endblock %}
+
