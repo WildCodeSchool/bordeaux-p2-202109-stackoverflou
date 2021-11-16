@@ -43,21 +43,32 @@ class AnswerManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-     public function nbAnswersByUser($id): array
-     {
-         $statement = $this->pdo->prepare("SELECT count(id) as nbAnswer
+    public function nbAnswersByUser($id): array
+    {
+        $statement = $this->pdo->prepare("SELECT count(id) as nbAnswer
         FROM answer 
         WHERE user_id =:id");
-         $statement->bindValue(":id", $id);
-         $statement->execute();
-         return $statement->fetchAll();
-     }
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 
     public function nbQuestionsByUser($id): array
     {
         $statement = $this->pdo->prepare("SELECT count(id) as nbQuestion
         FROM question 
         WHERE user_id =:id");
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+    public function nbLikesByUser($id): array
+    {
+        $statement = $this->pdo->prepare("SELECT sum(ranking) as nbLike, user_id
+        FROM answer
+        WHERE user_id =:id
+        GROUP BY user_id");
         $statement->bindValue(":id", $id);
         $statement->execute();
         return $statement->fetchAll();

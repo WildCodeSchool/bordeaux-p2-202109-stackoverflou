@@ -11,21 +11,22 @@
     <i title="Badge 6" class="fas fa-trophy"></i>
     <i title="Badge 7" class="fas fa-crown"></i>
 </span>
-        <p>{{profile.username}}</p>
+    <p>{{profile.username}}</p>
         <span class ="mb-3" style="font-size: 20px; color: black;">
-            {% for stat in stats %}
-                {{ stat.nbAnswer }}
+            {% for question in questions %}
+                {{ question.nbQuestion }}
             {% endfor %}
     <i title="Questions asked" class="fas fa-question-circle"></i>
             {% for stat in stats %}
                 {{ stat.nbAnswer }}
             {% endfor %}
     <i title="Answers sent" class="fas fa-comment"></i>
-    284 <i title="Thumbs-up received" class="fas fa-thumbs-up"></i>
+            {% for like in likes %}
+                {{ like.nbLike }}
+            {% endfor %}
+    <i title="Thumbs-up received" class="fas fa-thumbs-up"></i>
     </span>
     </div>
     <div class="row">
-
     </div>
-
 </div>
