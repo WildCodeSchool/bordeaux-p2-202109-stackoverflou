@@ -43,13 +43,13 @@ class AnswerManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-     public function nbAnswersByUser()
+     public function nbAnswersByUser($id): array
      {
-         $statement = $this->pdo->prepare("
-        SELECT count(answer.user_id) as nbAnswer, u.username FROM answer
-        JOIN user u
-        ON answer.user_id = u.id
-        group by u.id");
+         $statement = $this->pdo->prepare("SELECT count(id) as nbAnswer
+        FROM answer 
+        WHERE user_id =:id");
+         $statement->bindValue(":id", $id);
+         $statement->execute();
          return $statement->fetchAll();
      }
 

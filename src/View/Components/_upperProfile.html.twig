@@ -13,8 +13,11 @@
 </span>
         <p>{{profile.username}}</p>
         <span class ="mb-3" style="font-size: 20px; color: black;">
-    12 <i title="Questions asked" class="fas fa-question-circle">{{ stat.nbAnswer }}</i>
-    36 <i title="Answers sent" class="fas fa-comment"></i>
+    12 <i title="Questions asked" class="fas fa-question-circle"></i>
+            {% for stat in stats %}
+                {{ stat.nbAnswer }}
+            {% endfor %}
+       <i title="Answers sent" class="fas fa-comment"></i>
     284 <i title="Thumbs-up received" class="fas fa-thumbs-up"></i>
     </span>
     </div>
