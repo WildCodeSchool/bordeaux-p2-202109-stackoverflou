@@ -21,6 +21,7 @@ return [
     'questions' => ['QuestionController', 'index',],
     'questions/answers' => ['QuestionController', 'addAnswer', ['id']],
     'logout' => ['UserController', 'logout'],
-    'questions/tags' => ['QuestionController', 'showTags', ['id']]
+    'questions/tags' => ['QuestionController', 'showTags', ['id']],
+    'questions/rank' => ['AnswerController', 'rankUp'],
 
 ];
