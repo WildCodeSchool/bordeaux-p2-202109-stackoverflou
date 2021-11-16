@@ -27,6 +27,7 @@ class QuestionController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $answerManager = new AnswerManager();
             $answerManager->rankUp($_POST['answerId']);
+            header('Location: /questions/show?id=' .$_GET['id']);
         }
         $questionManager = new QuestionManager();
         $tagManager = new TagManager();
@@ -34,7 +35,7 @@ class QuestionController extends AbstractController
         $question = $questionManager->selectOneById($questionId);
         $colorGenerator = new ColorGenerator();
         $answerManager = new AnswerManager();
-        $nbRankByAnswer = $answerManager->NbRankByAnswers($questionId);
+        //$nbRankByAnswer = $answerManager->NbRankByAnswers($answerId);
         return $this->twig->render('Question/show.html.twig', [
             'question' => $question,
             'tags'     => $colorGenerator->generateTagsWithColor($tags),
