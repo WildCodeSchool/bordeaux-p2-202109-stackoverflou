@@ -19,7 +19,7 @@ return [
     'questions/show' => ['QuestionController','show', ['id']],
     'questions/edit' => ['QuestionController','edit', ['id']],
     'questions' => ['QuestionController', 'index',],
-    // 'questions/answers' => ['QuestionController', 'addAnswer', ['id']],
+    'questions/answers' => ['QuestionController', 'addAnswer', ['id']],
     'logout' => ['UserController', 'logout'],
     'questions/tags' => ['QuestionController', 'showTags', ['id']]
 
