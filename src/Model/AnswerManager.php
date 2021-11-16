@@ -43,7 +43,7 @@ class AnswerManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function nbAnswersByUser()
+     public function nbAnswersByUser()
     {
         $statement = $this->pdo->prepare("
         SELECT count(answer.user_id) as nbAnswer, u.username FROM answer
@@ -51,5 +51,23 @@ class AnswerManager extends AbstractManager
         ON answer.user_id = u.id
         group by u.id");
         return $statement->fetchAll();
+
+    public function rankUp($answerId) : void
+    {
+        $statement = $this->pdo->prepare("UPDATE answer 
+        SET ranking = ranking+1
+        WHERE id=:id;");
+        $statement->bindValue(":id", $answerId);
+        $statement->execute();
+    }
+
+    public function NbRankByAnswers(int $questionId)
+    {
+       $query = (" SELECT id, ranking FROM answer a 
+        WHERE id=:id;");
+       $statement = $this->pdo->prepare($query);
+       $statement->bindValue(":id", $questionId);
+       $statement->execute();
+       return $statement->fetchAll();
     }
 }
