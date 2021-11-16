@@ -31,7 +31,7 @@ class HomeController extends AbstractController
         $colorGenerator = new ColorGenerator();
         $tags = $colorGenerator->generateTagsWithColor();
         $questionManager = new QuestionManager();
-        $popularQuestions = $questionManager->selectQuestionPopular();
+        $popularQuestions = $questionManager->selectQuestionsPopular();
         return $this->twig->render('Home/index.html.twig', [
             'questions' => $questions,
             'tags'      => $tags,
