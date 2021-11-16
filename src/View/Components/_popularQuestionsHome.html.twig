@@ -3,11 +3,7 @@
         <div class="d-flex w-10 justify-content-between" >
             <h5 class="mb-1">Questions Les Plus Populaires</h5>
         </div>
-        {% for question in popular_questions %}
-        <p class="mb-1"></p>
-            <div class="container text-center">
-            <h5 class="mt-2">Questions Les Plus Populaires</h5>
-            </div>
+
     </a>
     {% for question in popular_questions %}
         <p class="mb-2 mt-2 border"></p>
@@ -17,5 +13,6 @@
             <small class="text-muted"> {{ question.nbrep }} <i class="fas fa-comment-dots"></i></small>
             </div>
         </div>
-    {% endfor%}
+
+{% endfor%}
 </div>
