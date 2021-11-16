@@ -117,7 +117,6 @@ class QuestionController extends AbstractController
             $id = trim($_POST['id']);
             $questionManager = new QuestionManager();
             $questionManager->delete((int)$id);
-            header('Location:/questions');
         }
     }
 

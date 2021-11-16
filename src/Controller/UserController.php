@@ -47,7 +47,7 @@ class UserController extends AbstractController
                 header('location: /user?id=' . $_SESSION['user']['id']);
                 exit();
             } else {
-                var_dump('La connexion a échouée');
+
             }
             header('Location:/');
         }

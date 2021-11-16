@@ -56,8 +56,7 @@ class QuestionManager extends AbstractManager
 
         return $statement->fetchAll();
     }
-
-    public function selectQuestionPopular()
+    public function selectQuestionsPopular()
     {
         $this->pdo->query("SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
         $statement = $this->pdo->query("
