@@ -38,5 +38,4 @@ class HomeController extends AbstractController
             'popular_questions' => $popularQuestions,
         ]);
     }
-
 }

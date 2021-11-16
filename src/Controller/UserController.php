@@ -47,7 +47,6 @@ class UserController extends AbstractController
                 header('location: /user?id=' . $_SESSION['user']['id']);
                 exit();
             } else {
-
             }
             header('Location:/');
         }
@@ -78,5 +77,14 @@ class UserController extends AbstractController
             'likes' => $nbLikesByUser,
         ]);
 
+    }
+
+    public function showAllProfiles()
+    {
+        $userManager = new UserManager();
+        $users = $userManager->selectAll();
+        return $this->twig->render('User/comminity.html.twig', [
+            'users' => $users
+        ]);
     }
 }
