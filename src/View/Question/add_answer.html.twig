@@ -2,8 +2,10 @@
 
 {% block content %}
         <form method="post">
+                <div class="container mt-5 mb-5 h-100 bg-grey pt-3 pb-3 mx-auto w-75 border border-black" style="min-height:5rem">
                 <div class="mb-3">
-                        <textarea placeholder="Votre réponse" name="description" id="exampleFormControlTextarea1" cols="120" rows="10"></textarea>
+                        <textarea placeholder="Votre réponse" name="description" class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                </div>
                 </div>
                 <input type="hidden" name="question_id" value="{{ question_id }}">
                 {% if (session.user) %}

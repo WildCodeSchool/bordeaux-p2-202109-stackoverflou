@@ -17,13 +17,13 @@
     </div>
 
     <div class="container">
-        <ul>
+        <ul class="mt-4">
             {% for answer in answers %}
                 <li class="list-group-item">
                     <h4 class="mt-4 font-weight-normal">Réponse donnée par {{ answer.username }} le {{ answer.created_at|date("d/m/Y") }}</h4>
                 <form method="post" action="">
                     <input type="hidden" name="answerId" value={{ answer.answerId }}>
-                    <button name="nbRank" value="{{ answer.ranking }}">Like</button>
+                    <button name="nbRank" class="fas fa-thumbs-up" value="{{ answer.ranking }}"></button>
                     {{ answer.ranking }}
                 </form>
                     <div>
