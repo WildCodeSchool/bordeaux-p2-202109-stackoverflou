@@ -65,14 +65,18 @@ class UserController extends AbstractController
         $userManager = new UserManager();
         $answerManager = new AnswerManager();
         $userData = $userManager->selectOneById($id);
-
         $answersByIdUser = $questionManager->selectAnswersByIdUser();
-        $nbAnswersByUser = $answerManager->nbAnswersByUser();
+        $nbAnswersByUser = $answerManager->nbAnswersByUser($id);
+        $nbQuestionsByUser = $answerManager->nbQuestionsByUser($id);
+        $nbLikesByUser = $answerManager->nbLikesByUser($id);
         return $this->twig->render('User/user.html.twig', [
             'profile' => $userData,
             'answers' => $answersByIdUser,
             'stats' => $nbAnswersByUser,
+            'questions' => $nbQuestionsByUser,
+            'likes' => $nbLikesByUser,
         ]);
+
     }
 
     public function showAllProfiles()
