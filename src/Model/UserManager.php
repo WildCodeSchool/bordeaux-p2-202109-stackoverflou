@@ -36,7 +36,7 @@ class UserManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function NbAnswersByUser()
+    public function nbAnswersByUser()
     {
         $statement = $this->pdo->query("
         SELECT count(answer.user_id) as nbAnswer, u.username FROM camelchest.answer
