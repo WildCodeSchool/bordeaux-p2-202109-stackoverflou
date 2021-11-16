@@ -27,6 +27,7 @@ class QuestionController extends AbstractController
         $answerManager = new AnswerManager();
         if (isset($_POST['answerId'])) {
             $answerManager->rankUp($_POST['answerId']);
+            header('Location: /questions/show?id=' . $_GET['id']);
         }
         if (isset($_POST['validation'])) {
             $_POST['user_id'] = $_SESSION['user']['id'];

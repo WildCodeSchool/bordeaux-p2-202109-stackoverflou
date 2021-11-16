@@ -31,15 +31,15 @@
                 <h2>Quick Nav</h2>
                 <ul class="list-unstyled footer-link">
                     {% if (session.user) %}
-                    <li><a href="/questions/add">Poser une question</a> </li>
+                        <li><a href="/questions/add">Poser une question</a> </li>
                     {% else %}
-                    <li><a href="/user/connect">Poser une question</a> </li>
+                        <li><a href="/user/connect">Poser une question</a> </li>
                     {% endif %}
                     <li><a href="#">Communauté</a> </li>
                     {% if (session.user) %}
-                    <li><a href="/user?id={{ session.user.id }}">Mon profil</a> </li>
+                        <li><a href="/user?id={{ session.user.id }}">Mon profil</a> </li>
                     {% else %}
-                    <li><a href="/user/connect">Mon profil</a> </li>
+                        <li><a href="/user/connect">Mon profil</a> </li>
                     {% endif %}
                 </ul>
             </div>

@@ -33,6 +33,7 @@ class AnswerManager extends AbstractManager
     {
         $query = '
         SELECT a.*, u.username, u.pseudo_github FROM answer a 
+        SELECT u.username, u.id, a.id as answerId, a.description, a.created_at, a.ranking FROM answer a 
         JOIN user u 
         ON a.user_id = u.id
         WHERE a.question_id=:questionId
@@ -56,8 +57,8 @@ class AnswerManager extends AbstractManager
     public function rankUp($answerId): void
     {
         $statement = $this->pdo->prepare("UPDATE answer 
-        SET ranking = ranking+1
-        WHERE id=:id;");
+        SET ranking = ranking +1
+        WHERE id=:id");
         $statement->bindValue(":id", $answerId);
         $statement->execute();
     }
@@ -67,8 +68,8 @@ class AnswerManager extends AbstractManager
         $query = (" SELECT id, ranking FROM answer a 
         WHERE id=:id;");
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(":id", $questionId);
+        $statement->bindValue(":id", $id);
         $statement->execute();
-        return $statement->fetchAll();
+        return $statement->fetch();
     }
 }
