@@ -6,6 +6,7 @@ use App\Model\AnswerManager;
 use App\Model\QuestionManager;
 use App\Model\TagManager;
 use App\Model\UserManager;
+use Michelf\MarkdownExtra;
 
 class UserController extends AbstractController
 {
@@ -77,15 +78,16 @@ class UserController extends AbstractController
             'questions' => $nbQuestionsByUser,
             'likes' => $nbLikesByUser,
         ]);
-
     }
 
     public function showAllProfiles()
     {
         $userManager = new UserManager();
-        $users = $userManager->selectAll();
+        $users = $userManager->communityStats();
         return $this->twig->render('User/comminity.html.twig', [
-            'users' => $users
+            'users' => $users,
+
+
         ]);
     }
 

@@ -118,4 +118,29 @@
 .no-border {
     border: 0;
 }
-
+.hljs {
+    display: block;
+    padding: .5em;
+    background: #232525;
+    color: #E6E1DC;
+}
+.hljs-keyword {
+    color: #D97621;
+    font-weight: unset;
+}
+.hljs-title {
+    color: #F8D794;
+    font-weight: unset;
+}
+.hljs-variable {
+    color: #B67BD5;
+}
+.hljs-built_in {
+    color: #00C853;
+}
+.hljs-string {
+    color: #72E8AC;
+}
+.hljs-number {
+    color: #FA0B12;
+}
