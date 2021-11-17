@@ -13,9 +13,4 @@ class AnswerController extends AbstractController
         header("Location: /questions/rank");
     }
 
-    public function rankByAnswer(): int
-    {
-        $answerManager = new AnswerManager();
-        $answerManager->NbRankByAnswers();
-    }
 }
