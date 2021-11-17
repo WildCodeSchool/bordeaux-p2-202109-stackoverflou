@@ -10,6 +10,8 @@
 
 namespace App\Model;
 
+use Michelf\MarkdownExtra;
+
 use App\Model\Connection;
 use PDO;
 
@@ -52,7 +54,7 @@ abstract class AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetch();
+        return $this->transformAnswer($statement->fetch());
     }
 
     /**
@@ -64,5 +66,15 @@ abstract class AbstractManager
         $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
+    }
+
+    private function transformAnswer($fetchAll)
+    {
+        $result = [];
+        foreach ($fetchAll as $answerData) {
+            $answerData['description'] = MarkdownExtra::defaultTransform($answerData['description']);
+            $result[] = $answerData;
+        }
+        return $result;
     }
 }
