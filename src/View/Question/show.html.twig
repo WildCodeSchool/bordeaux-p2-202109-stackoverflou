@@ -27,10 +27,12 @@
                 <form method="post" class="float-end" action="">
                     <input type="hidden" name="answerId" value={{ answer.answerId }}>
                     <button name="nbRank" class="fas fa-thumbs-up" value="{{ answer.ranking }}"></button>
+                    <img class="row text-center img_profile"src="https://avatars.githubusercontent.com/{{ profile.pseudo_github }}" class="img-thumbnail" alt="...">
+                    <button name="nbRank" value="{{ answer.ranking }}">Like</button>
                     {{ answer.ranking }}
                 </form>
                     <div>
-                        {{ answer.description }}
+                        {{ answer.description|raw }}
                     </div>
                     {% else %}
                     Pas encore de réponse, soyez le premier à rendre service !
