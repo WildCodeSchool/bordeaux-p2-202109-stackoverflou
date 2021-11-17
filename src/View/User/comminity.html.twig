@@ -1,21 +1,21 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Liste des camelChesters</h1>
+    <div class=" h-100 d-flex flex-column align-items-center my-2 mt-5 d-flex bg-no-repeat bg-right-bottom">
+        <h1>Liste des camelChesters</h1>
+    </div>
+    <div class="align-items-center d-flex">
     {% for user in users %}
 <ul>
-
     <li class="border">
         {{ user.username }}   <br>
         Nombre de réponses : {{ user.answers }}     <br>
         Nombre de questions : {{ user.questions }}    <br>
         Nombre de Like sur Reponse : {{ user.likes }}        <br>
         Pseudo_GitHub : {{ user.pseudo_github }}
-
     </li>
 </ul>
-
     {% endfor %}
-
+    </div>
 {% endblock %}
 

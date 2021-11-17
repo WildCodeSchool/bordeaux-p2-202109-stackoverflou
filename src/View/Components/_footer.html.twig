@@ -3,8 +3,9 @@
         <div class="row mb-5">
             <div class="col-md-3 mb-5">
                 <h2>A Propos</h2>
-                <a href="#">GitHub Project</a>
+                <a href="#">Notre équipe</a>
             </div>
+
             <div class="col-md-3 mb-5">
                 <h2>Contact & Adresse</h2>
                 <ul class="list-unstyled footer-link">
@@ -25,6 +26,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="col-md-3 mb-5">
                 <h2>Quick Nav</h2>
                 <ul class="list-unstyled footer-link">
@@ -33,7 +35,7 @@
                     {% else %}
                         <li><a href="/user/connect">Poser une question</a> </li>
                     {% endif %}
-                    <li><a href="/community">Communauté</a> </li>
+                    <li><a href="#">Communauté</a> </li>
                     {% if (session.user) %}
                         <li><a href="/user?id={{ session.user.id }}">Mon profil</a> </li>
                     {% else %}
@@ -41,6 +43,7 @@
                     {% endif %}
                 </ul>
             </div>
+
             <div class="col-md-3">
                 <h2>Notre équipe</h2>
                 <ul class="list-unstyled footer-link d-flex footer-social justify-content-center">
