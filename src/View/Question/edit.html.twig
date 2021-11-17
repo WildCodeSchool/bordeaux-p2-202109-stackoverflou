@@ -1,7 +1,0 @@
-{% extends 'layout.html.twig' %}
-
-{% block content %}
-    <h1>Edit Question {{ question.title }}</h1>
-    {% include 'Components/_addQuestion.html.twig' %}
-    <a href="/questions/show?id={{ question.id }}">Back</a>
-{% endblock %}

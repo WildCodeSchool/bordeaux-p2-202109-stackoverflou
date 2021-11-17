@@ -27,6 +27,14 @@
     <i title="Thumbs-up received" class="fas fa-thumbs-up"></i>
     </span>
     </div>
-    <div class="row">
+    <div>
+        {% if profile.is_admin %}
+            <div>
+                <form method="POST">
+                    <input type="text" value="{{ tag.name }}" class="form-control" id="exampleFormControlInput1" placeholder="Ajouter un tag" name="name">
+                    <input class="btn btn-warning mt-2 mb-2" name="validation" type="submit" value="Valider">
+                </form>
+            </div>
+        {% endif %}
     </div>
 </div>

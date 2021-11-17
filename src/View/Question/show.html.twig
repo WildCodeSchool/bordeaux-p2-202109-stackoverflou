@@ -9,9 +9,6 @@
         {% include 'Components/_tag.html.twig' %}
         <h2 class="mb-3">Description</h2>
         <p>{{ question.description|nl2br }}</p>
-        {% if session.user.is_admin %}
-        <a href="/questions/edit?id={{ question.id }}">Edit</a>
-        {% endif %}
         {% include 'Components/_addAnswer.html.twig' %}
     </div>
 

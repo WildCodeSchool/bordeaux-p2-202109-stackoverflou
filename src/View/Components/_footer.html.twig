@@ -3,7 +3,7 @@
         <div class="row mb-5">
             <div class="col-md-3 mb-5">
                 <h2>A Propos</h2>
-                <a href="#">Notre équipe</a>
+                <a href="#">GitHub Project</a>
             </div>
 
             <div class="col-md-3 mb-5">
@@ -35,7 +35,7 @@
                     {% else %}
                         <li><a href="/user/connect">Poser une question</a> </li>
                     {% endif %}
-                    <li><a href="#">Communauté</a> </li>
+                    <li><a href="/community">Communauté</a> </li>
                     {% if (session.user) %}
                         <li><a href="/user?id={{ session.user.id }}">Mon profil</a> </li>
                     {% else %}

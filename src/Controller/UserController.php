@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\AnswerManager;
 use App\Model\QuestionManager;
+use App\Model\TagManager;
 use App\Model\UserManager;
 
 class UserController extends AbstractController
@@ -87,4 +88,5 @@ class UserController extends AbstractController
             'users' => $users
         ]);
     }
+
 }

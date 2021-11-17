@@ -46,4 +46,16 @@ class UserManager extends AbstractManager
         return $statement->fetchAll();
     }
 
+    public function communityStats ()
+    {
+        $statement = $this->pdo->query("
+        SELECT u.username,count(a.user_id) answers,u.pseudo_github, count(q.user_id) questions, sum(a.ranking) likes 
+        FROM user u
+        JOIN answer a
+        ON u.id = a.user_id
+        JOIN question q
+        ON u.id = q.user_id
+        GROUP BY u.id;");
+        return $statement->fetchall();
+    }
 }
