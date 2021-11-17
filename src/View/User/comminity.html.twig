@@ -1,18 +1,25 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+    <div class="container mt-5 mb-5 h-100 bg-grey pt-1 pb-1 text-center">
     <h1>Liste des camelChesters</h1>
+    </div>
     {% for user in users %}
 <ul>
+    <div class="container col-3 border border-dark mt-2 mb-3 mx-5 text-center">
 
-    <li class="border">
-        {{ user.username }}   <br>
+
+        <button class=" mt-2 badge rounded-pill bg-dark">
+            {{ user.username }}
+        </button> <br>
         Nombre de réponses : {{ user.answers }}     <br>
         Nombre de questions : {{ user.questions }}    <br>
         Nombre de Like sur Reponse : {{ user.likes }}        <br>
         Pseudo_GitHub : {{ user.pseudo_github }}
+    </div>
 
-    </li>
+
+
 </ul>
 
     {% endfor %}
