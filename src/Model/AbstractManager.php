@@ -10,9 +10,8 @@
 
 namespace App\Model;
 
-use Michelf\MarkdownExtra;
-
 use App\Model\Connection;
+use Michelf\MarkdownExtra;
 use PDO;
 
 /**
@@ -54,7 +53,7 @@ abstract class AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $this->transformAnswer($statement->fetch());
+        return $statement->fetch();
     }
 
     /**
@@ -68,13 +67,4 @@ abstract class AbstractManager
         $statement->execute();
     }
 
-    private function transformAnswer($fetchAll)
-    {
-        $result = [];
-        foreach ($fetchAll as $answerData) {
-            $answerData['description'] = MarkdownExtra::defaultTransform($answerData['description']);
-            $result[] = $answerData;
-        }
-        return $result;
-    }
 }
