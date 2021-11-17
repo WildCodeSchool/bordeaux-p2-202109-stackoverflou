@@ -9,7 +9,7 @@
             <div>
                 {{ answer.username }}
                 <h3 class="mt-4 font-weight-normal fs-6">Réponse donnée le {{ answer.created_at|date("d/m/Y") }}</h3>
-                {{ answer.description }}
+                {{ answer.description|raw }}
             </div>
             {% endfor %}
         </li>

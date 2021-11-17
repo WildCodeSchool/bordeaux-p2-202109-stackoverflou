@@ -11,6 +11,7 @@
 namespace App\Model;
 
 use App\Model\Connection;
+use Michelf\MarkdownExtra;
 use PDO;
 
 /**
@@ -65,4 +66,5 @@ abstract class AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
+
 }

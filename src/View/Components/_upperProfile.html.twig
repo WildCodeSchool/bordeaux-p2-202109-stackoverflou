@@ -1,31 +1,35 @@
 <div class="mt-4 d-flex align-items-center flex-column text-center">
-    <img class="row text-center img_profile"src="https://avatars.githubusercontent.com/{{ profile.pseudo_github }}" class="img-thumbnail" alt="...">
+    <div>
+        <div>
+            <div class="main">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+                <div class="circle5"></div>
+            </div>
+        </div>
+        <div>
+            <img class="text-center img_profile"src="https://avatars.githubusercontent.com/{{ profile.pseudo_github }}" class="img-thumbnail" alt="...">
+        </div>
+    </div>
     <div class="row">
         <h1>{{profile.user.id}}</h1>
-        <span class="mb-3" style="font-size: 24px; color: black;">
-    <i title="Badge 1" class="fas fa-ribbon"></i>
-    <i title="Badge 2" class="fas fa-hand-sparkles"></i>
-    <i title="Badge 3" class="fas fa-certificate"></i>
-    <i title="Badge 4" class="fas fa-award"></i>
-    <i title="Badge 5" class="fas fa-medal"></i>
-    <i title="Badge 6" class="fas fa-trophy"></i>
-    <i title="Badge 7" class="fas fa-crown"></i>
-</span>
-    <p>{{profile.username}}</p>
+        <p>{{profile.username}}</p>
         <span class ="mb-3" style="font-size: 20px; color: black;">
             {% for question in questions %}
                 {{ question.nbQuestion }}
             {% endfor %}
-    <i title="Questions asked" class="fas fa-question-circle"></i>
+                <i title="Questions asked" class="fas fa-question-circle"></i>
             {% for stat in stats %}
                 {{ stat.nbAnswer }}
             {% endfor %}
-    <i title="Answers sent" class="fas fa-comment"></i>
+                <i title="Answers sent" class="fas fa-comment"></i>
             {% for like in likes %}
                 {{ like.nbLike }}
             {% endfor %}
-    <i title="Thumbs-up received" class="fas fa-thumbs-up"></i>
-    </span>
+                <i title="Thumbs-up received" class="fas fa-thumbs-up"></i>
+        </span>
     </div>
     <div class="row">
     </div>
