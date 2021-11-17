@@ -31,9 +31,9 @@
 }
 .img_profile{
     position:absolute;
-    top:210px; bottom:0px; left:818px; right:0px;
+    top:190px; bottom:0px; left:799px; right:0px;
     border-radius: 50%;
-    width: 200px;
+    width: 240px;
     z-index: 3;
 }
 .container-fluid {
