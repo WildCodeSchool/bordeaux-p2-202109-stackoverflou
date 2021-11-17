@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use Michelf\MarkdownExtra;
+
 class QuestionManager extends AbstractManager
 {
     public const TABLE = 'question';
@@ -88,6 +90,17 @@ class QuestionManager extends AbstractManager
         ");
         $statement->bindValue(':id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetchAll();
+        return $this->transformAnswer($statement->fetchAll());
     }
+
+    private function transformAnswer($fetchAll)
+    {
+        $result = [];
+        foreach ($fetchAll as $answerData) {
+            $answerData['description'] = MarkdownExtra::defaultTransform($answerData['description']);
+            $result[] = $answerData;
+        }
+        return $result;
+    }
+
 }
