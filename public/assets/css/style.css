@@ -30,10 +30,9 @@
     margin-left: 2%;
 }
 .img_profile{
-    position:absolute;
-    top:210px; bottom:0px; left:818px; right:0px;
+    position: relative;
     border-radius: 50%;
-    width: 200px;
+    width: 240px;
     z-index: 3;
 }
 .container-fluid {
