@@ -1,6 +1,6 @@
 <div class="accordion" id="accordionExample">
     {% for question in questions %}
-    <div class="accordion-item">
+    <div class="accordion-item bg-white rounded p-2 shadow">
         <h2 class="accordion-header" id={{ "heading" ~ loop.index }}>
             <button class="accordion-button {{ loop.index == 1 ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-{{ question.id }}" aria-expanded="false" aria-controls="collapseOne">
                 <strong>{{ question.title }}</strong>
