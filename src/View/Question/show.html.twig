@@ -26,7 +26,7 @@
                     {{ answer.ranking }}
                 </form>
                     <div>
-                        {{ answer.description }}
+                        {{ answer.description|raw }}
                     </div>
                     {% else %}
                     Pas encore de réponse, soyez le premier à rendre service !

@@ -12,5 +12,4 @@ class AnswerController extends AbstractController
         $answerManager->rankUp($_POST['answerId']);
         header("Location: /questions/rank");
     }
-
 }
