@@ -1,12 +1,13 @@
 <form method="post">
         <div class="container mt-5 mb-5 h-100 bg-light pt-3 pb-3 mx-auto w-75 border border-black" style="min-height:5rem">
             <input type="hidden" value="{{ question.id }}" name="id">
-            <div class="mb-3 ">
-                <label for="exampleFormControlInput1" class="form-label" >Titre</label>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="d-block s-label mb4">Titre
+                </label>
                 <input type="text"  value="{{ question.title }}" class="form-control" id="exampleFormControlInput1" placeholder="Rapide description de votre problème" name="title">
             </div>
             <div class="mb-3">
-                <textarea placeholder="Description de votre problème" name="description" id="exampleFormControlTextarea1" class="form-control" rows="8" >{{ question.description }}</textarea>
+                <textarea placeholder="Inclus toutes les informations dont quelqu’un aurait besoin pour répondre à votre question" name="description" id="exampleFormControlTextarea1" class="form-control" rows="8" >{{ question.description }}</textarea>
             </div>
             {% for tag in tags %}
                 <div class="form-check d-inline-flex mb-3 ms-4">
@@ -17,7 +18,7 @@
                 </div>
             {% endfor %}
             <div class="text-center">
-            <input type="submit" value="Valider">
+            <input type="submit" value="Valider" class="btn btn-primary btn-sm col-2">
             </div>
         </div>
 </form>

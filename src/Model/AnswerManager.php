@@ -2,12 +2,17 @@
 
 namespace App\Model;
 
+use Michelf\MarkdownExtra;
+
 class AnswerManager extends AbstractManager
 {
     public const TABLE = 'answer';
 
     public function insert(array $answerData): int
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $query = '
         INSERT INTO answer (description, created_at, user_id, ranking, question_id)
         VALUES (:description, NOW(), :userId, 0, :questionId)
@@ -40,7 +45,8 @@ class AnswerManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':questionId', $questionId);
         $statement->execute();
-        return $statement->fetchAll();
+
+        return $this->transformAnswer($statement->fetchAll());
     }
 
     public function nbAnswersByUser($id): array
@@ -88,8 +94,18 @@ class AnswerManager extends AbstractManager
         $query = (" SELECT id, ranking FROM answer a 
         WHERE id=:id;");
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(":id", $id);
+        $statement->bindValue(":id", $questionId);
         $statement->execute();
         return $statement->fetch();
+    }
+
+    private function transformAnswer($fetchAll)
+    {
+        $result = [];
+        foreach ($fetchAll as $answerData) {
+            $answerData['description'] = MarkdownExtra::defaultTransform($answerData['description']);
+            $result[] = $answerData;
+        }
+        return $result;
     }
 }

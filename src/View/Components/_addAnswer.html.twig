@@ -1,11 +1,11 @@
 <form method="post">
     <div class="mb-3">
-        <textarea placeholder="Votre réponse" name="description" id="exampleFormControlTextarea1" cols="120" rows="10"></textarea>
+        <textarea placeholder="Votre réponse" name="description" id="exampleFormControlTextarea1" class="form-control" rows="8"></textarea>
     </div>
     <input type="hidden" name="question_id" value="{{ question_id }}">
     {% if (session.user) %}
         <input class="btn btn-warning" name="validation" type="submit" value="Valider">
     {% else %}
-        <a class="btn btn-warning" href="/user/create">Valider</a>
+        <a class="btn btn-warning btn-sm col-2" href="/user/create">Valider</a>
     {% endif %}
 </form>
