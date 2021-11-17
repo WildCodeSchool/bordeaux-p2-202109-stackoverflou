@@ -7,11 +7,13 @@
     {% for answer in answers %}
         <li class="list-group-item">
             <div>
+                {{ answer.username }}
                 <h3 class="mt-4 font-weight-normal fs-6">Réponse donnée le {{ answer.created_at|date("d/m/Y") }}</h3>
                 {{ answer.description }}
             </div>
+            {% endfor %}
         </li>
-    {% endfor %}
+
     </ul>
     </div>
 {% endblock %}

@@ -67,7 +67,7 @@ class UserController extends AbstractController
         $userManager = new UserManager();
         $answerManager = new AnswerManager();
         $userData = $userManager->selectOneById($id);
-        $answersByIdUser = $questionManager->selectAnswersByIdUser();
+        $answersByIdUser = $questionManager->selectAnswersByIdUser($id);
         $nbAnswersByUser = $answerManager->nbAnswersByUser($id);
         $nbQuestionsByUser = $answerManager->nbQuestionsByUser($id);
         $nbLikesByUser = $answerManager->nbLikesByUser($id);
@@ -86,8 +86,6 @@ class UserController extends AbstractController
         $users = $userManager->communityStats();
         return $this->twig->render('User/comminity.html.twig', [
             'users' => $users,
-
-
         ]);
     }
 
