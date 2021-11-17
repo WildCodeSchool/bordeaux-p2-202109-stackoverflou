@@ -82,9 +82,11 @@ class UserController extends AbstractController
     public function showAllProfiles()
     {
         $userManager = new UserManager();
-        $users = $userManager->selectAll();
+        $users = $userManager->communityStats();
         return $this->twig->render('User/comminity.html.twig', [
-            'users' => $users
+            'users' => $users,
+
+
         ]);
     }
 }
