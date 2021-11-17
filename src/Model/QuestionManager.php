@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use Michelf\MarkdownExtra;
+
 class QuestionManager extends AbstractManager
 {
     public const TABLE = 'question';
@@ -78,13 +80,24 @@ class QuestionManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function selectAnswersByIdUser()
+    public function selectAnswersByIdUser(): array
     {
         $statement = $this->pdo->prepare("
         SELECT a.created_at, a.id, a.description, u.id FROM answer a
         JOIN user u
         ON u.id = a.user_id");
         $statement->execute();
-        return $statement->fetchAll();
+        return $this->transformAnswer($statement->fetchAll());
     }
+
+    private function transformAnswer($fetchAll)
+    {
+        $result = [];
+        foreach ($fetchAll as $answerData) {
+            $answerData['description'] = MarkdownExtra::defaultTransform($answerData['description']);
+            $result[] = $answerData;
+        }
+        return $result;
+    }
+
 }
