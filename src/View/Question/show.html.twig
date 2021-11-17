@@ -22,11 +22,12 @@
                     <h4 class="mt-4 font-weight-normal">Réponse donnée par {{ answer.username }} le {{ answer.created_at|date("d/m/Y") }}</h4>
                 <form method="post" action="">
                     <input type="hidden" name="answerId" value={{ answer.answerId }}>
+                    <img class="row text-center img_profile"src="https://avatars.githubusercontent.com/{{ profile.pseudo_github }}" class="img-thumbnail" alt="...">
                     <button name="nbRank" value="{{ answer.ranking }}">Like</button>
                     {{ answer.ranking }}
                 </form>
                     <div>
-                        {{ answer.description }}
+                        {{ answer.description|raw }}
                     </div>
                     {% else %}
                     Pas encore de réponse, soyez le premier à rendre service !

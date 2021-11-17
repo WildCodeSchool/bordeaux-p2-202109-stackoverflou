@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\AnswerManager;
 use App\Model\QuestionManager;
 use App\Model\UserManager;
+use Michelf\MarkdownExtra;
 
 class UserController extends AbstractController
 {
@@ -76,7 +77,6 @@ class UserController extends AbstractController
             'questions' => $nbQuestionsByUser,
             'likes' => $nbLikesByUser,
         ]);
-
     }
 
     public function showAllProfiles()

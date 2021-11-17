@@ -10,7 +10,8 @@
     "minimum-stability": "stable",
     "require": {
         "twig/twig": "^3.1",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "michelf/php-markdown": "^1.9"
     },
     "require-dev": {
         "filp/whoops": "^2.9",
