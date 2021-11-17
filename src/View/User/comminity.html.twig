@@ -7,11 +7,9 @@
     {% for user in users %}
 <ul>
     <div class="container col-3 border border-dark mt-2 mb-3 mx-5 text-center">
-
-
-        <button class=" mt-2 badge rounded-pill bg-dark">
+        <a href="/user?id={{ user.id }}" class="btn btn-primary btn-sm col-2">
             {{ user.username }}
-        </button> <br>
+        </a> <br>
         Nombre de réponses : {{ user.answers }}     <br>
         Nombre de questions : {{ user.questions }}    <br>
         Nombre de Like sur Reponse : {{ user.likes }}        <br>
