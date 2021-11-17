@@ -2,12 +2,15 @@
 
 {% block content %}
 
-    <div class="container">
+    <div class="container mt-5  h-100 bg-light pt-3 pb-3 mx-100 w-75 border rounded-3">
         <h1 class="mb-3">{{ question.title }}</h1>
+        <h4 class="mt-3 font-weight-normal"> {{ profile.username }} {{ question.created_at|date("d/m/Y") }}</h4>
 
+    </div>
 
+    <div class="container mb-5 h-100 bg-light pt-3 pb-3 mx-100 w-75 border rounded-3">
         {% include 'Components/_tag.html.twig' %}
-        <h2 class="mb-3">Description</h2>
+        <h2 class="mb-3"></h2>
         <p>{{ question.description|nl2br }}</p>
         {% if session.user.is_admin %}
         <a href="/questions/edit?id={{ question.id }}">Edit</a>
@@ -15,17 +18,20 @@
         {% include 'Components/_addAnswer.html.twig' %}
     </div>
 
-    <div class="container">
-        <ul>
+    <div class="container mt-1 mb-5 h-100 bg-grey pt-1 pb-1 w-100">
+        <ul class="mt-4">
+
             {% for answer in answers %}
                 <li class="list-group-item">
-                    <h4 class="mt-4 font-weight-normal">Réponse donnée par {{ answer.username }} le {{ answer.created_at|date("d/m/Y") }}</h4>
-                <form method="post" action="">
+                <form method="post" class="float-end mt-3" action="">
                     <input type="hidden" name="answerId" value={{ answer.answerId }}>
-                    <img class="row text-center img_profile"src="https://avatars.githubusercontent.com/{{ profile.pseudo_github }}" class="img-thumbnail" alt="...">
-                    <button name="nbRank" value="{{ answer.ranking }}">Like</button>
-                    {{ answer.ranking }}
+                    <button name="nbRank" class="fas fa-thumbs-up" value="{{ answer.ranking }}">
+                        {{ answer.ranking }}
+                    </button>
+
                 </form>
+                <h4 class="mt-3 font-weight-normal"> {{ answer.username }} {{ answer.created_at|date("d/m/Y") }}</h4>
+
                     <div>
                         {{ answer.description|raw }}
                     </div>
@@ -36,4 +42,6 @@
         </ul>
     </div>
 
+
 {% endblock %}
+
