@@ -4,11 +4,13 @@
 
     <div class="container mt-5  h-100 bg-light pt-3 pb-3 mx-100 w-75 border rounded-3">
         <h1 class="mb-3">{{ question.title }}</h1>
+        <h4 class="mt-3 font-weight-normal"> {{ profile.username }} {{ question.created_at|date("d/m/Y") }}</h4>
+
     </div>
 
     <div class="container mb-5 h-100 bg-light pt-3 pb-3 mx-100 w-75 border rounded-3">
         {% include 'Components/_tag.html.twig' %}
-        <h2 class="mb-3">Description</h2>
+        <h2 class="mb-3"></h2>
         <p>{{ question.description|nl2br }}</p>
         {% if session.user.is_admin %}
         <a href="/questions/edit?id={{ question.id }}">Edit</a>
@@ -21,9 +23,7 @@
 
             {% for answer in answers %}
                 <li class="list-group-item">
-                <img class="row img_profile" src="https://avatars.githubusercontent.com/{{ profile.pseudo_github }}" class="img-thumbnail" alt="...">
                 <h4 class="mt-3 font-weight-normal"> {{ answer.username }} {{ answer.created_at|date("d/m/Y") }}</h4>
-
                 <form method="post" class="float-end" action="">
                     <input type="hidden" name="answerId" value={{ answer.answerId }}>
                     <button name="nbRank" class="fas fa-thumbs-up" value="{{ answer.ranking }}"></button>
