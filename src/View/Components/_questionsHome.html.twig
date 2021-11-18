@@ -8,7 +8,7 @@
         </h2>
         <div id="collapseOne-{{ question.id }}" class="accordion-collapse collapse {{ loop.index == 1 ? 'show' : '' }}" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <p> {{ question.description }} </p>
+                <p> {{ question.description|raw }} </p>
             </div>
             <div class="text-center mb-1">
                 <div class="wrapper">

@@ -14,10 +14,8 @@ class QuestionController extends AbstractController
     {
         $questionManager = new QuestionManager();
         $questions = $questionManager->selectAll('title');
-
         return $this->twig->render('Question/index.html.twig', ['questions' => $questions]);
     }
-
 
     /**
      * Show informations for a specific question
@@ -56,7 +54,6 @@ class QuestionController extends AbstractController
         ]);
     }
 
-
     /**
      * Edit a specific question
      */
@@ -80,7 +77,6 @@ class QuestionController extends AbstractController
             'question' => $question,
         ]);
     }
-
 
     /**
      * Add a new question
@@ -111,7 +107,6 @@ class QuestionController extends AbstractController
             'tags' => $tags,
         ]);
     }
-
 
     /**
      * Delete a specific question

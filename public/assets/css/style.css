@@ -165,7 +165,7 @@
     top:0; bottom:0; left:0;right:0;
     overflow:hidden;
     margin:auto;
-    animation: circle 6s linear infinite;
+    animation: circle 7s linear infinite;
 }
 
 .circle2{
@@ -177,7 +177,7 @@
     top:0; bottom:0; left:0;right:0;
     overflow:hidden;
     margin:auto;
-    animation: circle 5.5s linear infinite;
+    animation: circle 6.50s linear infinite;
 }
 
 .circle3{
@@ -189,7 +189,7 @@
     top:0; bottom:0; left:0;right:0;
     overflow:hidden;
     margin:auto;
-    animation: circle 5s linear infinite;
+    animation: circle 6s linear infinite;
 }
 
 .circle4{
@@ -201,7 +201,7 @@
     top:0; bottom:0; left:0;right:0;
     overflow:hidden;
     margin:auto;
-    animation: circle 4.5s linear infinite;
+    animation: circle 5.50s linear infinite;
 }
 
 .circle5{
@@ -213,7 +213,7 @@
     top:0; bottom:0; left:0;right:0;
     overflow:hidden;
     margin:auto;
-    animation: circle 4s linear infinite;
+    animation: circle 5s linear infinite;
 }
 
 @keyframes circle{
@@ -355,7 +355,6 @@ path.two {
     transform: translateX(0%);
     animation: color_anim 1s infinite 0.4s;
 }
-
 
 @keyframes color_anim {
     0% {
