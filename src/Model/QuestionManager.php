@@ -128,6 +128,16 @@ class QuestionManager extends AbstractManager
         return $answerData;
     }
 
+    public function selectAllForMarkdown(string $orderBy = '', string $direction = 'DESC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE;
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+        $statement = $this->pdo->query($query);
+        return $this->transformAnswer($statement->fetchAll());
+    }
+
     private function transformAnswer($fetchAll)
     {
         $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
