@@ -4,9 +4,11 @@
     </div>
     <input type="hidden" name="question_id" value="{{ question_id }}">
     {% if (session.user) %}
+        <div class="text-center">
         <input class="btn btn-warning" name="validation" type="submit" value="Valider">
+        </div>
     {% else %}
-        <a class="btn btn-warning btn-sm col-2" href="/user/create">Valider</a>
+        <a class="btn btn-warning btn-sm col-2 text-center" href="/user/create">Valider</a>
     {% endif %}
 </form>
 
