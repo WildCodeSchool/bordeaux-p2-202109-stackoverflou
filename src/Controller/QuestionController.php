@@ -18,7 +18,6 @@ class QuestionController extends AbstractController
         return $this->twig->render('Question/index.html.twig', ['questions' => $questions]);
     }
 
-
     /**
      * Show informations for a specific question
      */

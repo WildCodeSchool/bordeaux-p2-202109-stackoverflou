@@ -93,6 +93,17 @@ class QuestionManager extends AbstractManager
         return $this->transformAnswer($statement->fetchAll());
     }
 
+    public function selectOneById(int $id)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+        $answerData = $statement->fetch();
+        $answerData['description'] = MarkdownExtra::defaultTransform($answerData['description']);
+        return $answerData;
+    }
+
     private function transformAnswer($fetchAll)
     {
         $result = [];
