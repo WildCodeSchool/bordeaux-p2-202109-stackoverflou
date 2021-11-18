@@ -11,6 +11,9 @@ class QuestionManager extends AbstractManager
 
     public function insert(array $question): int
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $sta = $this->pdo->prepare("INSERT INTO " . self::TABLE . "(`title`,`description`,`created_at`, user_id) 
         VALUES (:t,:description, NOW(), :user_id)");
 
@@ -23,6 +26,9 @@ class QuestionManager extends AbstractManager
 
     public function update(array $question): bool
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
         $statement->bindValue('id', $question['id'], \PDO::PARAM_INT);
         $statement->bindValue('title', $question['title'], \PDO::PARAM_STR);
@@ -32,6 +38,9 @@ class QuestionManager extends AbstractManager
 
     public function selectOneByIdTag(int $id)
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("SELECT question.id, question.title, question.description, 
         tag.id, tag.name FROM " . 'question' . "
         JOIN tag_has_question tq 
@@ -46,6 +55,9 @@ class QuestionManager extends AbstractManager
 
     public function selectQuestionsByTag(int $id)
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("
         SELECT q.id, q.title, q.description FROM question q
         JOIN tag_has_question thq
@@ -60,6 +72,9 @@ class QuestionManager extends AbstractManager
     }
     public function selectQuestionsPopular()
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $this->pdo->query("SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
         $statement = $this->pdo->query("
         SELECT count(question_id) as nbrep, q.title, q.id FROM answer as a
@@ -72,6 +87,9 @@ class QuestionManager extends AbstractManager
 
     public function selectQuestionsByKeyword($keyword)
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("
         SELECT q.title, q.description FROM question q 
         WHERE q.title LIKE :keyword ");
@@ -82,6 +100,9 @@ class QuestionManager extends AbstractManager
 
     public function selectAnswersByIdUser($id)
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("
         SELECT u.id,u.username, a.description, a.created_at FROM user u
         JOIN answer a
@@ -95,6 +116,9 @@ class QuestionManager extends AbstractManager
 
     public function selectOneById(int $id)
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         // prepared request
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
@@ -106,6 +130,9 @@ class QuestionManager extends AbstractManager
 
     private function transformAnswer($fetchAll)
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $result = [];
         foreach ($fetchAll as $answerData) {
             $answerData['description'] = MarkdownExtra::defaultTransform($answerData['description']);
