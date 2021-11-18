@@ -8,6 +8,9 @@ class UserManager extends AbstractManager
 
     public function createUser(array $user): int
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("INSERT INTO " . static::TABLE .
             "(`username`, `email`, `password`, `created_at`, `is_admin`, `pseudo_github`)    
         VALUES(:username, :email, :password, NOW(), 0, :pseudo_github)");
@@ -21,6 +24,9 @@ class UserManager extends AbstractManager
 
     public function selectOneByEmail(string $email)
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare('SELECT * FROM ' . self::TABLE . ' WHERE email=:email');
         $statement->bindValue(':email', $email, \PDO::PARAM_STR);
         $statement->execute();
@@ -29,6 +35,9 @@ class UserManager extends AbstractManager
 
     public function update(array $user): bool
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `username` = :username WHERE id=:id");
         $statement->bindValue('id', $user['id'], \PDO::PARAM_INT);
         $statement->bindValue('username', $user['username'], \PDO::PARAM_STR);
@@ -38,6 +47,9 @@ class UserManager extends AbstractManager
 
     public function nbAnswersByUser()
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->query("
         SELECT count(answer.user_id) as nbAnswer, u.username FROM camelchest.answer
         JOIN user u
@@ -48,6 +60,9 @@ class UserManager extends AbstractManager
 
     public function communityStats()
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->query("
         SELECT u.id,u.username,count(a.user_id) answers,u.pseudo_github, count(q.user_id) 
         questions, sum(a.ranking) likes 

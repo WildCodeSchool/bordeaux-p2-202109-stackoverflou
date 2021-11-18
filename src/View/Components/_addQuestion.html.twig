@@ -7,6 +7,10 @@
         <div class="mb-3">
             <textarea placeholder="Inclus toutes les informations dont quelqu’un aurait besoin pour répondre à votre question" name="description" id="exampleFormControlTextarea1" class="form-control" rows="8" >{{ question.description }}</textarea>
         </div>
+        <div class = "mb-4">
+            <p> L'utilisation du Markdown est autorisée ! </p>
+            <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank">Cheat sheet sur le Markdown</a>
+        </div>
         {% for tag in tags %}
             <div class="form-check d-inline-flex mb-3 ms-4">
                 <input name="tags[]" class="form-check-input" type="checkbox" value="{{ tag.id }}" id="flexCheckChecked-{{ tag.id }}" >

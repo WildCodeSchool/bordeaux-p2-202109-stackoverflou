@@ -28,6 +28,9 @@ class AnswerManager extends AbstractManager
 
     public function update(array $answers): bool
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . "SET 'description' = :description WHERE id=:id");
         $statement->bindValue('id', $answers['id'], \PDO::PARAM_INT);
 
@@ -36,6 +39,9 @@ class AnswerManager extends AbstractManager
 
     public function getAnswersByQuestionId(int $questionId): array
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $query = ('
         SELECT u.username, u.id, a.id as answerId, a.description, a.created_at, a.ranking, a.user_id FROM answer a 
         JOIN user u 
@@ -51,6 +57,9 @@ class AnswerManager extends AbstractManager
 
     public function nbAnswersByUser($id): array
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("SELECT count(id) as nbAnswer
         FROM answer 
         WHERE user_id =:id");
@@ -61,6 +70,9 @@ class AnswerManager extends AbstractManager
 
     public function nbQuestionsByUser($id): array
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("SELECT count(id) as nbQuestion
         FROM question 
         WHERE user_id =:id");
@@ -71,6 +83,9 @@ class AnswerManager extends AbstractManager
 
     public function nbLikesByUser($id): array
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("SELECT sum(ranking) as nbLike, user_id
         FROM answer
         WHERE user_id =:id
@@ -82,6 +97,9 @@ class AnswerManager extends AbstractManager
 
     public function rankUp($answerId): void
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $statement = $this->pdo->prepare("UPDATE answer 
         SET ranking = ranking +1
         WHERE id=:id");
@@ -91,6 +109,9 @@ class AnswerManager extends AbstractManager
 
     public function nbRankByAnswers(int $questionId)
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $query = (" SELECT id, ranking FROM answer a 
         WHERE id=:id;");
         $statement = $this->pdo->prepare($query);
@@ -101,6 +122,9 @@ class AnswerManager extends AbstractManager
 
     private function transformAnswer($fetchAll)
     {
+        $statement = $this->pdo->query('SET GLOBAL FOREIGN_KEY_CHECKS=0;');
+        $statement->execute();
+
         $result = [];
         foreach ($fetchAll as $answerData) {
             $answerData['description'] = MarkdownExtra::defaultTransform($answerData['description']);
