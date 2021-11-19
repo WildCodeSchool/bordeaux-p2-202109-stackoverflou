@@ -68,7 +68,7 @@ class QuestionManager extends AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetchAll();
+        return $this->transformAnswer($statement->fetchAll());
     }
     public function selectQuestionsPopular()
     {
@@ -95,7 +95,7 @@ class QuestionManager extends AbstractManager
         WHERE q.title LIKE :keyword ");
         $statement->bindValue(':keyword', "%" . $keyword . "%", \PDO::PARAM_STR);
         $statement->execute();
-        return $statement->fetchAll();
+        return $this->transformAnswer($statement->fetchAll());
     }
 
     public function selectAnswersByIdUser($id)
