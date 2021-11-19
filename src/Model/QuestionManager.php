@@ -91,7 +91,7 @@ class QuestionManager extends AbstractManager
         $statement->execute();
 
         $statement = $this->pdo->prepare("
-        SELECT q.title, q.description FROM question q 
+        SELECT q.title, q.description, q.id FROM question q 
         WHERE q.title LIKE :keyword ");
         $statement->bindValue(':keyword', "%" . $keyword . "%", \PDO::PARAM_STR);
         $statement->execute();

@@ -1,7 +1,6 @@
 :root {
     --primary-color: #7952b3;
 }
-
 .navbar {
     background-color: #7952b3 !important;
 }
@@ -79,7 +78,6 @@
     line-height: 1.5;
     margin-bottom: 5px;
 }
-
 .footer-social a {
     line-height: 0;
     border-radius: 50%;

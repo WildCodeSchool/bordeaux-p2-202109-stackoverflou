@@ -20,12 +20,12 @@
                 <li class="list-group-item">
                 <form method="post" class="float-end mt-3" action="">
                     <input type="hidden" name="answerId" value={{ answer.answerId }}>
-                    <button name="nbRank" class="btn btn-secondary btn-sm fas fa-thumbs-up navbar" value="{{ answer.ranking }}">
+                    <button name="nbRank" class="btn btn-secondary btn-sm fas fa-thumbs-up navbar rounded-pill" value="{{ answer.ranking }}">
                         {{ answer.ranking }}
                     </button>
 
                 </form>
-                <a href="/user?id={{ answer.user_id }}" class="btn btn-info btn-sm col-2">{{ answer.username }}</a>
+                <a href="/user?id={{ answer.user_id }}" class="btn btn-dark rounded-pill">{{ answer.username }}</a>
                 <h6 class="mt-3 font-weight-normal"> Réponse donnée le  {{ answer.created_at|date("d/m/Y") }}</h6>
                     <div>
                         {{ answer.description|raw }}
