@@ -71,6 +71,11 @@ class UserController extends AbstractController
         $nbAnswersByUser = $answerManager->nbAnswersByUser($id);
         $nbQuestionsByUser = $answerManager->nbQuestionsByUser($id);
         $nbLikesByUser = $answerManager->nbLikesByUser($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $tagId = $_POST;
+            $tagManager = new TagManager();
+            $tagManager->insert($tagId);
+        }
         return $this->twig->render('User/user.html.twig', [
             'profile' => $userData,
             'answers' => $answersByIdUser,

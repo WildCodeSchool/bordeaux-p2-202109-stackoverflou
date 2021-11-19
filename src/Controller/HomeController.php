@@ -24,7 +24,7 @@ class HomeController extends AbstractController
     public function questionHome(): string
     {
         $questionManager = new QuestionManager();
-        $questions = $questionManager->selectAll('created_at');
+        $questions = $questionManager->selectAllForMarkdown('created_at');
         if (isset($_GET['keyword'])) {
             $questions = $questionManager->selectQuestionsByKeyword($_GET['keyword']);
         }
