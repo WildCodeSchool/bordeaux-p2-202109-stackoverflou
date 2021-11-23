@@ -38,4 +38,11 @@ class HomeController extends AbstractController
             'popular_questions' => $popularQuestions,
         ]);
     }
+
+    public function autocomplete($keyword)
+    {
+        $questionManager = new QuestionManager();
+        $questions = $questionManager->selectQuestionsByKeyword($keyword);
+        return json_encode($questions);
+    }
 }

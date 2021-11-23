@@ -22,6 +22,7 @@ return [
     'logout' => ['UserController', 'logout'],
     'questions/tags' => ['QuestionController', 'showTags', ['id']],
     'questions/rank' => ['AnswerController', 'rankUp'],
-    'community'  => ['UserController', 'showAllProfiles']
+    'community'  => ['UserController', 'showAllProfiles'],
+    'autocomplete'  => ['HomeController', 'autocomplete', ['keyword']],
 
 ];
